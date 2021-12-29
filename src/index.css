@@ -11,3 +11,81 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*  ==== VARIABLES ====    */
+
+:root {
+  --header-height: 4.5rem;
+
+  /* Colors */
+
+  --test : #270a4d;
+  --primary: #cda34f;
+  --secondary: #e9e7da;
+  --terceary: #636b46;
+  --quaternary: #373f27;
+
+  --primaryLightColor: #d4e6a5;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5)
+
+  /* font size */
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+}
+
+
+.border-img{
+
+  border:0.93rem solid;
+  
+  border-image-source: url(../src/assets/Art_Nouveau_frame.svg);
+  border-image-slice: 0 40 0 40;
+  border-image-slice: 75;
+ 
+}
+
+.button-primary {
+  margin-left: 7.5rem;
+  background-color: var(--terceary);
+  border-radius: 7px;
+  color: white;
+  padding: 0.5rem;
+}
+
+.card-img {
+  margin: 1.5rem;
+  height: auto;
+  width: auto; 
+  max-width: 33.7rem; 
+  max-height: 33.7rem; 
+  box-shadow: 10px;
+  border-bottom: 2px solid var(black);
+  box-shadow: var(--lightShadow);
+}
+
+
+
+
+.navbar {
+  background: var(--primary);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(black);
+  box-shadow: var(--lightShadow);
+}
