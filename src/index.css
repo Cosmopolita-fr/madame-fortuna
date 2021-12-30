@@ -79,7 +79,9 @@ html {
 }
 
 
-
+.card-rev {
+  transform: rotate(180deg);
+}
 
 .navbar {
   background: var(--primary);

@@ -1,48 +1,103 @@
 import React, { useState, useEffect } from 'react'
 import img from '../assets/RWS_Tarot_01_Magician.jpg'
-import url from '../data'
+import {
+  cards_major,
+  cards_wands,
+  cards_cups,
+  cards_swords,
+  cards_pents
+} from '../data'
 
 const Card = () => {
   const [card, setCard] = useState([])
+  const [image, setImage] = useState([])
+  const [name, setName] = useState('')
+  const [desc, setDesc] = useState('')
+  const [isRev, setIsRev] = useState(false)
+
+  const rotateCard = () => {
+    const random_boolean = Math.random() < 0.5
+    setIsRev(random_boolean)
+  }
 
   const randomCard = () => {
+    // project review - no repeat rng
+
     const min = 0
-    const max = url.length
+    const max = cards_swords[0].length
     const random = Math.floor(Math.random() * (max - min)) + min
-    setCard(url[random])
+    setCard(cards_swords[0][random].image)
   }
-  const fetchImg = url => {}
-  const fetchInfo = url => {}
+
+  const fetchInfo = async () => {
+    const response = await fetch(
+      'https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1'
+    )
+    const data = await response.json()
+
+    setName(data.cards[0].name)
+    setDesc(data.cards[0].desc)
+
+    if (data.cards[0].type === 'major') {
+      const major = cards_major.filter(
+        element => element.id === data.cards[0].value_int
+      )
+      console.log(major[0].image)
+      setImage(major[0].image)
+    }
+
+    if (data.cards[0].suit === 'pentacles') {
+      const pentacles = cards_pents.filter(
+        element => element.id === data.cards[0].value_int
+      )
+      setImage(pentacles[0].image)
+    }
+
+    if (data.cards[0].suit === 'cups') {
+      const cups = cards_cups.filter(
+        element => element.id === data.cards[0].value_int
+      )
+      setImage(cups[0].image)
+    }
+
+    if (data.cards[0].suit === 'swords') {
+      const swords = cards_swords.filter(
+        element => element.id === data.cards[0].value_int
+      )
+      setImage(swords[0].image)
+    }
+
+    if (data.cards[0].suit === 'wands') {
+      const wands = cards_wands.filter(
+        element => element.id === data.cards[0].value_int
+      )
+      console.log(wands[0].image)
+      setImage(wands[0].image)
+    }
+  }
 
   useEffect(() => {
-    randomCard()
-    return () => {
-      randomCard()
-    }
-  }, [])
+    fetchInfo()
+    return () => {}
+  }, [isRev])
 
   return (
     <section>
       <div>
-        <img className="card-img border-img" src={card} alt="" />
-        <button className="button-primary" onClick={randomCard}>
+        <img
+          className={`${
+            isRev ? 'card-img border-img card-rev' : 'card-img border-img'
+          }`}
+          src={image}
+          alt=""
+        />
+        <button className="button-primary" onClick={fetchInfo}>
           PICK ANOTHER CARD
         </button>
-        <h1>Magician</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, quas
-          repudiandae. Vitae iste, sit, dignissimos fugit dicta sint non aut
-          enim voluptas odio eum alias deleniti doloremque ad excepturi veniam?
-        </p>
+        <h1>{name}</h1>
+        <p>{desc}</p>
       </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque, eos
-          deserunt libero expedita minus iusto, dolor magnam nisi eius, vero
-          molestiae beatae! Quod, quibusdam quia cupiditate nostrum cumque eius
-          unde.
-        </p>
-      </div>
+      <div></div>
     </section>
   )
 }
