@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import img from '../assets/RWS_Tarot_01_Magician.jpg'
+import cardback from '../assets/cardback.svg'
 import {
   cards_major,
   cards_wands,
@@ -10,14 +10,20 @@ import {
 
 const Card = () => {
   const [card, setCard] = useState([])
-  const [image, setImage] = useState([])
+  const [image, setImage] = useState(cardback)
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
   const [isRev, setIsRev] = useState(false)
 
+  const [loading, setloading] = useState(false)
+
   const rotateCard = () => {
     const random_boolean = Math.random() < 0.5
     setIsRev(random_boolean)
+  }
+
+  const handleClick = () => {
+    setImage(cardback)
   }
 
   const randomCard = () => {
@@ -77,25 +83,23 @@ const Card = () => {
   }
 
   useEffect(() => {
-    fetchInfo()
     return () => {}
-  }, [isRev])
+  }, [])
 
   return (
     <section>
       <div>
         <img
-          className={`${
-            isRev ? 'card-img border-img card-rev' : 'card-img border-img'
-          }`}
+          className={`${isRev ? 'card-img card-rev' : 'card-img'}`}
           src={image}
           alt=""
+          onClick={fetchInfo}
         />
-        <button className="button-primary" onClick={fetchInfo}>
+        <button className="button-primary" onClick={handleClick}>
           PICK ANOTHER CARD
         </button>
-        <h1>{name}</h1>
-        <p>{desc}</p>
+        <h1 className="title">{name}</h1>
+        <p className="subtitle">{desc}</p>
       </div>
       <div></div>
     </section>
