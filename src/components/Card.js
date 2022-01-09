@@ -8,14 +8,15 @@ import {
   cards_pents
 } from '../data'
 
+// import { Button, ButtonGroup, Stack } from '@chakra-ui/react'
+
 const Card = () => {
   const [card, setCard] = useState([])
   const [image, setImage] = useState(cardback)
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
   const [isRev, setIsRev] = useState(false)
-
-  const [loading, setloading] = useState(false)
+  const [isLoading, setLoading] = useState(false)
 
   const rotateCard = () => {
     const random_boolean = Math.random() < 0.5
@@ -36,6 +37,7 @@ const Card = () => {
   }
 
   const fetchInfo = async () => {
+    rotateCard()
     const response = await fetch(
       'https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1'
     )
@@ -90,16 +92,28 @@ const Card = () => {
     <section>
       <div>
         <img
-          className={`${isRev ? 'card-img card-rev' : 'card-img'}`}
+          className={`${image === cardback ? 'backcard-img' : 'card-img'} ${
+            isRev ? 'card-rev' : ''
+          }`}
           src={image}
           alt=""
-          onClick={fetchInfo}
+          onClick={() => {
+            if (image === cardback) {
+              fetchInfo()
+            }
+          }}
         />
-        <button className="button-primary" onClick={handleClick}>
+        <button
+          className="button-primary"
+          style={
+            image === cardback ? { display: 'none' } : { display: 'inline' }
+          }
+          onClick={handleClick}
+        >
           PICK ANOTHER CARD
         </button>
-        <h1 className="title">{name}</h1>
-        <p className="subtitle">{desc}</p>
+        <h1 className="title">{`${image === cardback ? '' : name}`}</h1>
+        <p className="subtitle">{`${image === cardback ? '' : desc}`}</p>
       </div>
       <div></div>
     </section>
