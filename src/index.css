@@ -45,10 +45,29 @@ html {
 }
 
 
+.backcard-img {
+  margin-top: 4rem;
+  height: auto;
+  width: auto; 
+  max-width: 28rem; 
+  max-height: 28rem; 
+  /* border-bottom: 2px solid var(black); */
+  /* box-shadow: var(--lightShadow); */
+  box-shadow: 1px 1px 1px 1px var(--black);
+  border: solid var(--black)
+  
+}
+
+
+.backcard-img:hover, .backcard-img:active{
+  box-shadow: 0 0 1.5em blueviolet;
+  
+}
 
 .button-primary {
-  margin-left: 6.5rem;
   background-color: var(--black-coffee);
+  height: auto;
+  width: auto;
   border-radius: 7px;
   color: white;
   padding: 0.5rem;
@@ -63,11 +82,11 @@ html {
 }
 
 .card-img {
-  margin: 2.5rem;
+  margin: 4rem;
   height: auto;
   width: auto; 
-  max-width: 33.7rem; 
-  max-height: 33.7rem; 
+  max-width: 28rem; 
+  max-height: 28rem; 
   box-shadow: 10px;
   /* border-bottom: 2px solid var(black); */
   /* box-shadow: var(--lightShadow); */
@@ -75,26 +94,6 @@ html {
   border: solid;
   box-shadow: inset 0 0 1.2em gold, 0 0 1.5em white;
 
-  
-}
-
-.backcard-img {
-  margin: 2.5rem;
-  height: auto;
-  width: auto; 
-  max-width: 33.7rem; 
-  max-height: 33.7rem; 
-  /* border-bottom: 2px solid var(black); */
-  /* box-shadow: var(--lightShadow); */
-  box-shadow: 1px 1px 1px 1px var(--black);
-  border: solid var(--black)
-  
-}
-
-
-
-.backcard-img:hover, .backcard-img:active{
-  box-shadow: inset 0 0 1.2em gold, 0 0 1.5em blueviolet;
   
 }
 
@@ -114,15 +113,19 @@ html {
   transform: rotate(180deg);
 }
 
-
-.title {
-  font-family: 'Eczar', serif;
-  font-size: 1.5rem;
-  font-weight: Bold;
-  margin: 2rem 1rem 0.5rem 2rem;
-  text-align: left;
-  color: cornsilk;
+.navbar {
+  background-color: var(--black);
+  /* background-image: url(./assets/galaxy-bg.jpg); */
+  /* background-size: cover; */
+  
+  height: 5rem;
+  width: 100%;
+  /* border-bottom: 2px solid var(black); */
+  /* box-shadow: var(--lightShadow); */
+  box-shadow: 1px 1px 1px 1px var(--cornsilk);
 }
+
+
 
 .subtitle {
   
@@ -136,17 +139,16 @@ html {
 
 }
 
-.navbar {
-  background-color: var(--black);
-  /* background-image: url(./assets/galaxy-bg.jpg); */
-  /* background-size: cover; */
-  
-  height: 5rem;
-  display: flex;
-  position: relative;
-  align-items: center;
-  /* border-bottom: 2px solid var(black); */
-  /* box-shadow: var(--lightShadow); */
-  box-shadow: 1px 1px 1px 1px var(--cornsilk);
-}
 
+.title {
+  font-family: 'Eczar', serif;
+  font-size: 1.5rem;
+  font-weight: Bold;
+
+  margin-top: 1rem;
+  margin-right: auto;
+  margin-left: 1.5rem;
+
+  text-align: left;
+  color: cornsilk;
+}

@@ -90,7 +90,16 @@ const Card = () => {
 
   return (
     <section>
-      <div>
+      <h1 className="title">{`${image === cardback ? '' : name}`}</h1>
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
         <img
           className={`${image === cardback ? 'backcard-img' : 'card-img'} ${
             isRev ? 'card-rev' : ''
@@ -103,6 +112,7 @@ const Card = () => {
             }
           }}
         />
+
         <button
           className="button-primary"
           style={
@@ -115,7 +125,6 @@ const Card = () => {
         <h1 className="title">{`${image === cardback ? '' : name}`}</h1>
         <p className="subtitle">{`${image === cardback ? '' : desc}`}</p>
       </div>
-      <div></div>
     </section>
   )
 }
