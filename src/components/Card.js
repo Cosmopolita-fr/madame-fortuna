@@ -8,7 +8,7 @@ import {
   cards_pents
 } from '../data'
 
-// import { Button, ButtonGroup, Stack } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 
 const Card = () => {
   const [card, setCard] = useState([])
@@ -113,7 +113,22 @@ const Card = () => {
           }}
         />
 
-        <button
+        <Box
+          display={image === cardback ? 'none' : ''}
+          as="button"
+          p={3}
+          color="white"
+          fontWeight="bold"
+          borderRadius="md"
+          bgGradient="linear(to-r, purple.400, purple.900)"
+          _hover={{
+            bgGradient: 'linear(to-r, purple.900, yellow.100)'
+          }}
+          onClick={handleClick}
+        >
+          Pick another card
+        </Box>
+        {/* <button
           className="button-primary"
           style={
             image === cardback ? { display: 'none' } : { display: 'inline' }
@@ -121,7 +136,7 @@ const Card = () => {
           onClick={handleClick}
         >
           PICK ANOTHER CARD
-        </button>
+        </button> */}
         <h1 className="title">{`${image === cardback ? '' : name}`}</h1>
         <p className="subtitle">{`${image === cardback ? '' : desc}`}</p>
       </div>

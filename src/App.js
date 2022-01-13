@@ -1,31 +1,26 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import { extendTheme, ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from './themes/index'
 
 // import pages
 import Home from './pages/Home'
+import Search from './pages/Search'
+import Error from './pages/Error'
 // import components
 import Navbar from './components/Navbar'
-// import galaxy from './assets/galaxy-bg.jpg'
-
-// const customTheme = extendTheme({
-//   styles: {
-//     global: {
-//       body: {
-//         backgroundImage: galaxy,
-//         bgSize: 'contain'
-//       }
-//     }
-//   }
-// })
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <ChakraProvider theme={theme}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </ChakraProvider>
     </BrowserRouter>
   )
 }
