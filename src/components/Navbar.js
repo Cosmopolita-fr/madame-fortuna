@@ -31,7 +31,7 @@ const Navbar = () => {
     return () => {
       onClose()
     }
-  }, [location.pathname])
+  }, [location])
 
   return (
     <>

@@ -12,10 +12,18 @@ import {
 
 function SearchForm() {
   const [searchTerm, setSearchTerm] = useState('major')
+  const [cards, setCards] = useState()
   const searchValue = useRef('')
 
   const searchCard = () => {
-    setSearchTerm(searchValue.current.value)
+    setSearchTerm(searchValue.current.value.toLowerCase().replace(/\s/g, '+'))
+  }
+
+  const fetchInfo = async () => {
+    if (searchTerm === 'major') {
+      setCards(cards_major)
+      return
+    }
   }
 
   return (

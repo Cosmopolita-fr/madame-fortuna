@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import Loading from './Loading'
+
+// icons
+import { GiPentacle, GiHandOfGod } from 'react-icons/gi'
+import { RiSwordLine } from 'react-icons/ri'
+import { FaGlassMartiniAlt } from 'react-icons/fa'
+import { ImMagicWand } from 'react-icons/im'
+
+// data
 import cardback from '../assets/cardback.svg'
 import {
   cards_major,
@@ -8,13 +17,25 @@ import {
   cards_pents
 } from '../data'
 
-import { Box, Button } from '@chakra-ui/react'
+//chakra
+import {
+  Box,
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
+  HStack,
+  Spinner
+} from '@chakra-ui/react'
 
 const Card = () => {
   const [card, setCard] = useState([])
   const [image, setImage] = useState(cardback)
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
+  const [suit, setSuit] = useState('Major')
+  const [icon, setIcon] = useState('')
+  const [meaningUp, setMeaningUp] = useState([])
   const [isRev, setIsRev] = useState(false)
   const [isLoading, setLoading] = useState(false)
 
@@ -27,31 +48,26 @@ const Card = () => {
     setImage(cardback)
   }
 
-  const randomCard = () => {
-    // project review - no repeat rng
-
-    const min = 0
-    const max = cards_swords[0].length
-    const random = Math.floor(Math.random() * (max - min)) + min
-    setCard(cards_swords[0][random].image)
-  }
-
   const fetchInfo = async () => {
+    setLoading(true)
     rotateCard()
     const response = await fetch(
       'https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1'
     )
     const data = await response.json()
-
     setName(data.cards[0].name)
     setDesc(data.cards[0].desc)
+    setSuit(data.cards[0].suit)
+    setMeaningUp(data.cards[0].meaning_up.split(/[;,]+/))
 
+    if (isRev) setMeaningUp(data.cards[0].meaning_rev.split(/[;,]+/))
     if (data.cards[0].type === 'major') {
       const major = cards_major.filter(
         element => element.id === data.cards[0].value_int
       )
-      console.log(major[0].image)
       setImage(major[0].image)
+      setSuit('major')
+      setIcon(<GiHandOfGod size={30} />)
     }
 
     if (data.cards[0].suit === 'pentacles') {
@@ -59,6 +75,7 @@ const Card = () => {
         element => element.id === data.cards[0].value_int
       )
       setImage(pentacles[0].image)
+      setIcon(<GiPentacle size={25} />)
     }
 
     if (data.cards[0].suit === 'cups') {
@@ -66,6 +83,7 @@ const Card = () => {
         element => element.id === data.cards[0].value_int
       )
       setImage(cups[0].image)
+      setIcon(<FaGlassMartiniAlt size={20} />)
     }
 
     if (data.cards[0].suit === 'swords') {
@@ -73,24 +91,28 @@ const Card = () => {
         element => element.id === data.cards[0].value_int
       )
       setImage(swords[0].image)
+      setIcon(<RiSwordLine size={25} />)
     }
 
     if (data.cards[0].suit === 'wands') {
       const wands = cards_wands.filter(
         element => element.id === data.cards[0].value_int
       )
-      console.log(wands[0].image)
       setImage(wands[0].image)
+      setIcon(<ImMagicWand size={20} />)
     }
+    setLoading(false)
   }
 
-  useEffect(() => {
-    return () => {}
-  }, [])
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <section>
-      <h1 className="title">{`${image === cardback ? '' : name}`}</h1>
+      <h1 className="title">{`${image === cardback ? '' : name} ${
+        image != cardback && isRev ? ' - Reverse' : ''
+      }`}</h1>
 
       <div
         style={{
@@ -128,18 +150,40 @@ const Card = () => {
         >
           Pick another card
         </Box>
-        {/* <button
-          className="button-primary"
-          style={
-            image === cardback ? { display: 'none' } : { display: 'inline' }
-          }
-          onClick={handleClick}
+        <HStack
+          spacing={10}
+          display={image === cardback ? 'none' : ''}
+          mt={'2rem'}
+          mr={'auto'}
+          mb={'0.2rem'}
+          ml={'0.5rem'}
         >
-          PICK ANOTHER CARD
-        </button> */}
-        <h1 className="title">{`${image === cardback ? '' : name}`}</h1>
-        <p className="subtitle">{`${image === cardback ? '' : desc}`}</p>
+          <Tag size={'md'} variant="subtle" colorScheme="purple">
+            <TagLabel>{suit}</TagLabel>
+            <TagRightIcon boxSize={5}>{icon}</TagRightIcon>
+          </Tag>
+        </HStack>
+        {/* <HStack
+          display={image === cardback ? 'none' : 'flex'}
+          flexWrap={'wrap'}
+        >
+          {meaningUp.map((word, index) => {
+            return (
+              <Tag
+                display={'flex'}
+                ml={'0.5rem'}
+                size={'sm'}
+                variant="subtle"
+                colorScheme="purple"
+                key={index}
+              >
+                <TagLabel>{word}</TagLabel>
+              </Tag>
+            )
+          })}
+        </HStack> */}
       </div>
+      <p className="subtitle">{`${image === cardback ? '' : desc}`}</p>
     </section>
   )
 }

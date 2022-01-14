@@ -46,7 +46,7 @@ html {
 
 
 .backcard-img {
-  margin-top: 2rem;
+  margin-top: 4rem;
   height: auto;
   width: auto; 
   max-width: 28rem; 
@@ -138,7 +138,7 @@ html {
   font-family: 'Eczar', serif;
   font-weight: lighter;
   font-size: 17px;
-  margin: 0 1.5rem;
+  margin: 1rem 1.5rem;
   text-align: justify;
   color: cornsilk;
   letter-spacing: 0.5px;

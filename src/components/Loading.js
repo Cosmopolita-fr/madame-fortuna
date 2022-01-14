@@ -1,9 +1,20 @@
 import React from 'react'
+import cardback from '../assets/cardback.svg'
+import { Triangle } from 'react-loader-spinner'
 
 function Loading() {
   return (
-    <div>
-      <h1>loading...</h1>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '1rem'
+      }}
+    >
+      <img className="backcard-img" src={cardback} alt="" />
+      <Triangle arialLabel="loading-indicator" color="blueviolet" />
     </div>
   )
 }

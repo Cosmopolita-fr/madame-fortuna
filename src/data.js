@@ -480,4 +480,13 @@ const cards_pents = [
   }
 ]
 
-export { cards_major, cards_wands, cards_cups, cards_swords, cards_pents }
+const suits = ['swords', 'pentacles', 'cups', 'wands']
+
+export {
+  cards_major,
+  cards_wands,
+  cards_cups,
+  cards_swords,
+  cards_pents,
+  suits
+}
