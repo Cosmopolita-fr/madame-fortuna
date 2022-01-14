@@ -271,7 +271,8 @@ const cards_wands = [
   {
     id: 9,
     type: 'minor',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Wands09.jpg',
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/4/4d/Tarot_Nine_of_Wands.jpg',
     suit: 'wands'
   },
   {

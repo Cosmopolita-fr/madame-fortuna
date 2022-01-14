@@ -4,7 +4,7 @@ const styles = {
   global: {
     body: {
       backgroundImage: galaxy,
-      bgSize: 'cover'
+      bgSize: 'contain'
     }
   }
 }

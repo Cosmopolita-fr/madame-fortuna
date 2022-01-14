@@ -1,11 +1,11 @@
-body {
+/* body {
   background-image: url(./assets/galaxy-bg.jpg);
   background-size: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
 }
-
+ */
 
 html {
   scroll-behavior: smooth;
