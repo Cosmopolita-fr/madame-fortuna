@@ -8,7 +8,7 @@ import { FaGlassMartiniAlt } from 'react-icons/fa'
 import { ImMagicWand } from 'react-icons/im'
 
 // data
-import cardback from '../assets/cardback.svg'
+import cardback from '../assets/cardback.png'
 import {
   cards_major,
   cards_wands,

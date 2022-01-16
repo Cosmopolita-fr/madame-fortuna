@@ -1,5 +1,5 @@
 import React from 'react'
-import cardback from '../assets/cardback.svg'
+import cardback from '../assets/cardback.png'
 import { Triangle } from 'react-loader-spinner'
 
 function Loading() {

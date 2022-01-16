@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../logo.svg'
+import logo from '../assets/logo.png'
 import {
   Menu,
   MenuButton,
@@ -37,7 +37,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <Link to="/">
-          <img src="" alt="logo" className="logo" />
+          <img src={logo} alt="logo" className="logo" />
         </Link>
         <Menu>
           <MenuButton
@@ -63,12 +63,10 @@ const Navbar = () => {
           p="5px"
           color="white"
           mt="0.5"
-          ml="0.5rem"
-          mr="0.5rem"
           bg="#000007ff"
           rounded="md"
           shadow="md"
-          boxShadow={'0 0 0.2em blueviolet'}
+          // boxShadow={'0 0 0.2em blueviolet'}
           display="flex"
           justifyContent="center"
         >
