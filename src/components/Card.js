@@ -140,6 +140,7 @@ const Card = () => {
           as="button"
           p={3}
           color="white"
+          fontFamily="Lexend Deca, sans-serif"
           fontWeight="bold"
           borderRadius="md"
           bgGradient="linear(to-r, purple.400, purple.900)"
@@ -158,7 +159,12 @@ const Card = () => {
           mb={'0.2rem'}
           ml={'0.5rem'}
         >
-          <Tag size={'md'} variant="subtle" colorScheme="purple">
+          <Tag
+            size={'md'}
+            fontFamily="Lexend Deca, sans-serif"
+            variant="subtle"
+            colorScheme="purple"
+          >
             <TagLabel>{suit}</TagLabel>
             <TagRightIcon boxSize={5}>{icon}</TagRightIcon>
           </Tag>

@@ -73,7 +73,11 @@ function SearchForm() {
     <>
       <section>
         <FormControl m={10} w={'50%'}>
-          <FormLabel htmlFor="search" fontSize="2xl" fontFamily="Eczar">
+          <FormLabel
+            htmlFor="search"
+            fontSize="2xl"
+            fontFamily="Alegreya, serif"
+          >
             Search a card
           </FormLabel>
           <Input
@@ -83,7 +87,7 @@ function SearchForm() {
             variant="flushed"
             focusBorderColor="blueviolet"
             fontSize="lg"
-            fontFamily="Eczar"
+            fontFamily="Alegreya, serif"
             placeholder="major"
             _placeholder={{ opacity: '1' }}
             ref={searchValue}
