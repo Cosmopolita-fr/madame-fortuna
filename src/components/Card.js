@@ -37,7 +37,7 @@ const Card = () => {
   const [icon, setIcon] = useState('')
   const [meaningUp, setMeaningUp] = useState([])
   const [isRev, setIsRev] = useState(false)
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(false)
 
   const rotateCard = () => {
     const random_boolean = Math.random() < 0.5
