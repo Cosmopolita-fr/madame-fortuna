@@ -37,7 +37,7 @@ const Card = () => {
   const [icon, setIcon] = useState('')
   const [meaningUp, setMeaningUp] = useState([])
   const [isRev, setIsRev] = useState(false)
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(true)
 
   const rotateCard = () => {
     const random_boolean = Math.random() < 0.5
@@ -109,7 +109,7 @@ const Card = () => {
   }
 
   return (
-    <section>
+    <div>
       <h1 className="title">{`${image === cardback ? '' : name} ${
         image != cardback && isRev ? ' - Reverse' : ''
       }`}</h1>
@@ -190,7 +190,7 @@ const Card = () => {
         </HStack> */}
       </div>
       <p className="subtitle">{`${image === cardback ? '' : desc}`}</p>
-    </section>
+    </div>
   )
 }
 

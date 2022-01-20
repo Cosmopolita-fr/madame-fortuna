@@ -10,12 +10,11 @@ function CardList({ cards }) {
             key={id}
             display={'flex'}
             direction={'row'}
-            flexWrap={'wrap'}
             justifyContent={'center'}
           >
-            <Box>
+            <Flex>
               <img className="card-img" src={image} alt="" />
-            </Box>
+            </Flex>
           </Flex>
         )
       })}

@@ -96,7 +96,9 @@ function SearchForm() {
           <FormHelperText>Sample text</FormHelperText>
         </FormControl>
       </section>
-      <CardList cards={cards} />
+      <div className="cardlist">
+        <CardList cards={cards} />
+      </div>
     </>
   )
 }

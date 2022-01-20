@@ -50,7 +50,8 @@ html {
 
 
 .backcard-img {
-  margin-top: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   height: auto;
   width: auto; 
   max-width: 28rem; 
@@ -112,6 +113,12 @@ html {
  
 }
 
+.cardlist{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 .card-rev {
   transform: rotate(180deg);

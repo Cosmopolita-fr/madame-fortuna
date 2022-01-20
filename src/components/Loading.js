@@ -1,6 +1,6 @@
 import React from 'react'
 import cardback from '../assets/cardback.png'
-import { Triangle } from 'react-loader-spinner'
+import { Spinner } from '@chakra-ui/react'
 
 function Loading() {
   return (
@@ -14,7 +14,14 @@ function Loading() {
       }}
     >
       <img className="backcard-img" src={cardback} alt="" />
-      <Triangle arialLabel="loading-indicator" color="blueviolet" />
+      <Spinner
+        position={'absolute'}
+        thickness="0.8rem"
+        speed="0.65s"
+        emptyColor="#fcf5d7ff"
+        color="#39313eff"
+        size="xl"
+      />
     </div>
   )
 }
