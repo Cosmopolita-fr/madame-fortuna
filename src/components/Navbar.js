@@ -46,65 +46,64 @@ const Navbar = () => {
             aria-label="Options"
             onClick={onToggle}
             icon={<HamburgerIcon />}
-            variant="outline"
-            color="blueviolet"
+            variant="ghost"
+            color="#fcf5d7ff"
             _hover={{ bg: '#39313eff' }}
             _active={{
-              boxShadow: '0 0 1px 2px blueviolet, 0 1px 1px rgba(0, 0, 0, .15)'
+              boxShadow: '0 0 1px 2px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
             }}
             _focus={{
-              boxShadow: '0 0 1px 2px blueviolet, 0 1px 1px rgba(0, 0, 0, .15)'
+              boxShadow: '0 0 1px 2px #39313eff, 0 1px 1px rgba(0, 0, 0, .15)'
             }}
           />
         </Menu>
       </nav>
       <Collapse in={isOpen} animateOpacity>
         <Box
-          p="5px"
+          p="4px"
           color="white"
           mt="0.5"
           bg="#000007ff"
           rounded="md"
           shadow="md"
-          // boxShadow={'0 0 0.2em blueviolet'}
+          // boxShadow={'0 0 0.2em #39313eff'}
           display="flex"
           justifyContent="center"
         >
           <Link to="/search">
             <Button
-              colorScheme="purple"
+              color="#fcf5d7ff"
               variant="ghost"
               _focus={{
-                boxShadow:
-                  '0 0 1px 1px blueviolet, 0 1px 1px rgba(0, 0, 0, .15)'
+                boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
               }}
             >
               Search
             </Button>
           </Link>
           <Button
-            colorScheme="purple"
+            color="#fcf5d7ff"
             variant="ghost"
             _focus={{
-              boxShadow: '0 0 1px 1px blueviolet, 0 1px 1px rgba(0, 0, 0, .15)'
+              boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
             }}
           >
             Cards
           </Button>
           <Button
-            colorScheme="purple"
+            color="#fcf5d7ff"
             variant="ghost"
             _focus={{
-              boxShadow: '0 0 1px 1px blueviolet, 0 1px 1px rgba(0, 0, 0, .15)'
+              boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
             }}
           >
             About
           </Button>
           <Button
-            colorScheme="purple"
+            color="#fcf5d7ff"
             variant="ghost"
             _focus={{
-              boxShadow: '0 0 1px 1px blueviolet, 0 1px 1px rgba(0, 0, 0, .15)'
+              boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
             }}
           >
             Suits

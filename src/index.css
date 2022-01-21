@@ -126,7 +126,7 @@ html {
 
 .logo {
   display: block;
-  width: 4rem;
+  width: 3rem;
   transform: rotateY(180deg);
   
 }
@@ -141,7 +141,7 @@ html {
   /* background-image: url(./assets/galaxy-bg.jpg); */
   /* background-size: cover; */
   
-  height: 5rem;
+  height: 4rem;
   width: 100%;
   /* border-bottom: 2px solid var(black); */
   /* box-shadow: var(--lightShadow); */
