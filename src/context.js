@@ -31,6 +31,10 @@ const AppProvider = ({ children }) => {
   const [isRev, setIsRev] = useState(false)
   const [isLoading, setLoading] = useState(false)
 
+  const getRandom = arr => {
+    return arr[Math.floor(Math.random() * arr.length)]
+  }
+
   const fetchInfo = async () => {
     setLoading(true)
     rotateCard()
