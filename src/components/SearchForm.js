@@ -77,6 +77,7 @@ function SearchForm() {
             htmlFor="search"
             fontSize="2xl"
             fontFamily="Alegreya, serif"
+            color="#fcf5d7ff"
           >
             Search a card
           </FormLabel>
@@ -85,9 +86,10 @@ function SearchForm() {
             name="name"
             type="text"
             variant="flushed"
-            focusBorderColor="blueviolet"
+            focusBorderColor="#fcf5d7ff"
             fontSize="lg"
             fontFamily="Alegreya, serif"
+            color="#fcf5d7ff"
             placeholder="major"
             _placeholder={{ opacity: '1' }}
             ref={searchValue}
