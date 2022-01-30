@@ -1,9 +1,10 @@
 import React from 'react'
-import Card from '../components/Card'
+import NewCard from '../components/NewCard'
+import Cardback from '../components/Cardback'
 function Home() {
   return (
     <>
-      <Card />
+      <NewCard />
     </>
   )
 }

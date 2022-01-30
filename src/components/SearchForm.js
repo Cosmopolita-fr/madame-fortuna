@@ -2,13 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { FormControl, FormLabel, FormHelperText, Input } from '@chakra-ui/react'
 
-import {
-  cards_major,
-  cards_wands,
-  cards_cups,
-  cards_swords,
-  cards_pents
-} from '../data'
+import tarot_cards from '../data'
 import CardList from './CardList'
 
 function SearchForm() {
@@ -22,8 +16,7 @@ function SearchForm() {
 
   const fetchInfo = async () => {
     // const url = `https://rws-cards-api.herokuapp.com/api/v1/cards/search?q=${searchTerm}`
-
-    if (searchTerm === 'major') {
+    /* if (searchTerm === 'major') {
       setCards(cards_major)
     } else if (searchTerm === 'pentacles') {
       setCards(cards_pents)
@@ -33,7 +26,7 @@ function SearchForm() {
       setCards(cards_cups)
     } else if (searchTerm === 'swords') {
       setCards(cards_swords)
-    }
+    } */
     /* else {
       const response = await fetch(url)
       const data = await response.json()
