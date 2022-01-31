@@ -21,9 +21,12 @@ const AppProvider = ({ children }) => {
   const [isLoading, setLoading] = useState(false)
 
   const getRandom = () => {
+    setLoading(true)
     let newCard = deck[Math.floor(Math.random() * deck.length)]
     setRandomCard(newCard)
+    setLoading(false)
   }
+
   useEffect(() => {
     getRandom()
 
@@ -34,7 +37,12 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ randomCard, setRandomCard, isLoading, setLoading }}
+      value={{
+        randomCard,
+        setRandomCard,
+        isLoading,
+        setLoading
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useGlobalContext } from '../context'
-
+import Loading from './Loading'
 /* Chakra */
 import { Box, Tag, TagLabel, TagRightIcon, HStack } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
 function NewCard() {
-  const { card, icon } = useGlobalContext()
+  const { card, icon, isLoading, setLoading } = useGlobalContext()
   const { name, image, desc, suit, meaning_up, id } = card
 
   return (
