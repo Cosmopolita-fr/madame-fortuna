@@ -53,9 +53,6 @@ function Tags({ suit, meaning_up, meaning_rev }) {
         mb={'0.25rem'}
         ml={'.75rem'}
         as="button"
-        onClick={() => {
-          console.log('Oi')
-        }}
       >
         {icon}
         <Tag

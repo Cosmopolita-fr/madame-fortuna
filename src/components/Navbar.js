@@ -37,7 +37,10 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <Link to="/">
-          <img src={logo} alt="logo" className="logo" />
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={logo} alt="logo" className="logo" />
+            <h1 className="logotitle">Madame Fortuna</h1>
+          </div>
         </Link>
         <Menu>
           <MenuButton
