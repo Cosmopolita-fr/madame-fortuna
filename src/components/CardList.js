@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Box } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 function CardList({ cards }) {
   return (
     <>
@@ -13,7 +14,9 @@ function CardList({ cards }) {
             justifyContent={'center'}
           >
             <Flex>
-              <img className="card-img" src={image} alt="" />
+              <Link to={`/card/${id}`}>
+                <img className="card-img" src={image} alt="" />
+              </Link>
             </Flex>
           </Flex>
         )

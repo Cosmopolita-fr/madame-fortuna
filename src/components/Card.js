@@ -9,7 +9,7 @@ import { deck } from '../data.js'
 
 import { BsArrowLeftShort } from 'react-icons/bs'
 /* Chakra */
-import { Button, color } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
