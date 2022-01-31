@@ -1,493 +1,962 @@
-const cards_major = [
+const deck = [
   {
     id: 0,
     type: 'major',
+    name: 'O Louco',
+    filename: 'RWS_Tarot_00_Fool',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg',
+    suit: 'major',
+    desc: 'Um jovem caminha alegremente.  O sol brilha atrás dele e acima das montanhas. Ele está numa jornada e leva consigo uma trouxa com todos os seus pertences - são suas ferramentas. Suas mangas bufantes são como asas. A flor representa sua pureza. O cão tenta alertá-lo para o perigo em que ele se encontra, porém ele segue dançando. Mais um passo e ele cairá do precipício. Cair do precipício significa sair do estado de unidade no qual ele se encontra. O arcano de número 0 está, antes de tudo, em união perfeita, sem dualidades entre mente e corpo, representando um estado de perfeita harmonia e apontando para as infinitas potencialidades e possibilidades da jornada. A jornada é a busca da unidade perdida, a busca de si. A cor amarela aponta para a energia do sol e do terceiro chakra. As montanhas são o objetivo que ele quer alcançar. Força, vontade e potência.',
+    meaning_up: 'coragem, otimismo, aventura, inocência',
+    meaning_rev: 'ingenuidade, oportunidade perdida, temeridade',
+    value: '0'
   },
   {
     id: 1,
     type: 'major',
+    name: 'O Mago',
+    filename: 'RWS_Tarot_01_Magician',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg',
+    suit: 'major',
+    desc: 'O alquimista em seu laboratório. O mago canaliza a energia espiritual através do trabalho com os elementos representados pelos pantáculos (terra), copas (água), paus (fogo) e espadas (ar). Ele aponta para baixo para indicar a correspondência cósmica entre as forças superiores e inferiores. As flores representam a fertilidade. O feitiço frutifica. Suas vestes brancas simbolizam a pureza, e a túnica vermelha, o desejo.Sua mesa é o campo de ação e sua vareta concentra a energia vital. Com seu gesto, ele descarrega na terra o poder que recebe dos céus. Representa o arquétipo de Mercúrio, mensageiro dos deuses e símbolo da individuação; guia dos processos de regeneração. Com seu trabalho com a magia, atinge o domínio das forças ocultas da natureza. É a consciência do ego que dá forma ao universo exterior, e possui infinitas possibilidades. Seu poder criativo e emocional se enraíza, contudo, no mundo material. O mago representa a morada do verdadeiro eu, a força de vontade dirigida a um objetivo: consciência, ação e criação.',
+    meaning_up: 'unidade, inspiração, força criativa',
+    meaning_rev: 'impotência, energia refreada, inação',
+    value: '1'
   },
   {
     id: 2,
     type: 'major',
+    name: 'A Sacerdotisa',
+    filename: 'RWS_Tarot_02_High_Priestess',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg',
+    suit: 'major',
+    desc: 'A sacerdotisa tem uma expressão séria no rosto. Em seu peito, há uma cruz, em suas mãos, o livro das leis, e em seus pés, a lua minguante.Suas vestes são azuis e em sua cabeça há uma coroa de Isis. Atrás dela, um pano com palmeiras e romãs estampadas e, mais ao fundo, água. Ela está num templo suspenso em uma ilha. Aos seus lados, duas colunas com as letras B e J. Ela representa a verdade interior, porém inconsciente. Como uma esfinge, ela controla o acesso ao mar da memória universal e do inconsciente coletivo. Para chegar até lá, é preciso passar pelo seu véu.',
+    meaning_up: 'intuição, espiritualidade, subconsciente',
+    meaning_rev: 'perda de si, medo, rigidez',
+    value: '2'
   },
   {
     id: 3,
     type: 'major',
+    name: 'A Imperatriz',
+    filename: 'RWS_Tarot_03_Empress',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg',
+    suit: 'major',
+    desc: 'A imperatriz tem uma expressão serena no rosto. Ela tem uma coroa de estrelas  na cabeça e um cetro na mão direita. Seu vestido branco tem romãs estampadas. Ela está confortavelmente sentada sobre vários panos e almofadas. Ao seu lado, um escudo com um espelho de Vênus, símbolo do feminino. À sua frente, há um campo de trigo e atrás dela, um bosque denso com um riacho que deságua num rio. A cor amarela remete ao poder e a vegetação, à fertilidade. Ela representa a misericórdia e o amor maternais e liga-se à inteligência das sensações e da natureza.',
+    meaning_up: 'fertilidade, projetos, sentimentos',
+    meaning_rev: 'infertilidade, frustração, racionalidade excessiva',
+    value: '3'
   },
   {
     id: 4,
     type: 'major',
+    name: 'O Imperador',
+    filename: 'RWS_Tarot_04_Emperor',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg',
+    suit: 'major',
+    desc: 'O imperador se senta imperturbável em seu trono. Atrás dele, um rochedo. Seu trono também é de pedra. Ele veste uma armadura coberta por uma túnica vermelha. Sua longa barba e cabelos brancos sugerem a sabedoria. Em sua cabeça, há uma coroa e, em suas mãos, um cetro e uma esfera. Velho e rígido, representa a esterilidade de uma vida rigidamente governada pela lei. Em termos freudianos, trata-se do superego, que incorpora as regras da sociedade aprendidas da figura paterna, o conceito abstrato de sociedade que substitui a experiência direta da natureza. Ele representa  o sistema e a obediência ao sistema, e a luta do indivíduo contra o sistema para construir suas próprias normas pessoais e individuais.',
+    meaning_up: 'autoridade, estrutura, disciplina',
+    meaning_rev: 'imaturidade, benevolência, insubordinação',
+    value: '4'
   },
   {
     id: 5,
     type: 'major',
+    filename: 'RWS_Tarot_05_Hierophant',
+    name: 'O Hierofante',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg',
+    suit: 'major',
+    desc: 'O Hierofante tem uma expressão austera no rosto. Na sua mão direita, os dedos indicador, médio e polegar apontam para cima. Com sua mão esquerda, ele segura um cetro. Em sua cabeça, há uma coroa de três andares e suas vestes são vermelhas e azuis. Ele se senta em um trono sobre um púlpito, em um templo. Ao seu lado, há duas colunas, e abaixo dele, duas chaves. Dois monges o reverenciam. As colunas indicam que aquele que aqui adentrar não penetrará os segredos da dualidade. O inconsciente ainda se oculta. O Hierofante é aquele que faz aparecer o sagrado. Representante do divino na terra. Sua coroa de três andares simboliza os três mundos (material, intelectual e espiritual). Seu cetro simboliza as virtudes teológicas (fé, esperança e caridade). Ele é quem guia o indivíduo no caminho pelo qual se chega à graça divina.',
+    meaning_up: 'guia espiritual, tradição, ensinamentos',
+    meaning_rev: 'rejeição da tradição, originalidade, autodidatismo',
+    value: '5'
   },
   {
     id: 6,
     type: 'major',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/TheLovers.jpg'
+    name: 'Os Amantes',
+    filename: 'TheLovers',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/TheLovers.jpg',
+    suit: 'major',
+    desc: 'Eva tem ao seu lado a árvore do conhecimento onde se enrola uma serpente. Adão tem ao seu lado uma árvore onde, no lugar dos frutos, há chamas. Ao fundo, uma montanha aponta para o céu, onde um anjo, iluminado pelo sol, celebra a perfeita união. Este arcano representa a questão do amor e da sexualidade na vida humana; o caminho da vida que se abre através do amor. União com o parceiro e integração, encontro com o sentido da vida proporcionado por esta união.',
+    meaning_up: 'amor, união, síntese',
+    meaning_rev: 'antagonismo, conflito, desafeto',
+    value: '6'
   },
   {
     id: 7,
     type: 'major',
+    name: 'O Carro',
+    filename: 'RWS_Tarot_07_Chariot',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg',
+    suit: 'major',
+    desc: 'A personagem veste uma armadura de cor azul ornada com luas e estrelas. Ele já está fora da cidade - a sua jornada já começou. Ele atravessou as águas e agora deve seguir em frente. Seu carro é puxado por duas esfinges. É o enigma que o impulsiona. O Carro representa a vitória, é a coroação do processo de amadurecimento. Diz respeito ao desenvolvimento do ego, à absorção das lições aprendidas ao longo da jornada, à capacidade de controlar os sentimentos e direcionar a força de vontade.',
+    meaning_up: 'controle, direção, força de vontade',
+    meaning_rev: 'insegurança, impotência, limitações',
+    value: '7'
   },
   {
     id: 8,
     type: 'major',
+    name: 'Força',
+    filename: 'RWS_Tarot_08_Strength',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg',
+    suit: 'major',
+    desc: 'Uma mulher vestida de branco ornada por um cinturão e por uma coroa de flores e folhas doma um leão. Seu rosto é sereno e a força necessária à ação que ela executa contrasta com sua tranquilidade e sua aparente fragilidade física. O animal é dócil com ela, e parece cumprimentá-la como se fosse um cão. Ao fundo, uma montanha, e para chegar até a realização, um caminho verdejante deve ser percorrido com a calma e a tranquilidade que apenas a força interior, que não é passível de ser medida exteriormente, permite. A busca interior exige o domínio sobre o ego e o confronto com sentimentos e desejos ocultos à consciência. É então que os mistérios se revelam, mas encontramos a força necessária para desvendá-los. O leão simboliza a força da personalidade e tudo aquilo que o ego tenta reprimir em sua tentativa de controlar a vida. A Força abre a caixa de Pandora da personalidade com tranquilidade, amor e confiança no resultado: o domínio sobre ela.',
+    meaning_up: 'domínio próprio, força interior, serenidade',
+    meaning_rev: 'fraqueza, sobrecarga, tormenta',
+    value: '8'
   },
   {
     id: 9,
     type: 'major',
+    filename: 'RWS_Tarot_09_Hermit',
+    name: 'O Eremita',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg',
+    suit: 'major',
+    desc: 'Um homem vestido com uma túnica cinza, cabisbaixo e com uma longa barba branca segura um cajado e uma lamparina cuja luz vem de uma estrela.Não há nada atrás dele, e ele caminha sobre o gelo. Este arcano é o guia que aparece no início da jornada, após encontrarmos a Força para iniciá-la. Representa um momento de introspecção antes que a Roda possa girar. Incentiva o indivíduo a olhar para dentro de si e encontrar a luz que ilumina a caminhada solitária em busca da iluminação. Nas palavras de Jung: “Quem olha para fora, sonha. Quem olha para dentro, acorda”.',
+    meaning_up: 'autoconhecimento, introspecção, exílio',
+    meaning_rev: 'isolamento, imaturidade espiritual, subterfúgios',
+    value: '9'
   },
   {
     id: 10,
     type: 'major',
+    filename: 'RWS_Tarot_10_Wheel_of_Fortune',
+    name: 'Roda da Fortuna',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg',
+    suit: 'major',
+    desc: 'A roda está suspensa nos céus, alheia ao mundo e às preocupações humanas. Nela, está escrito TAROT ou TORAT. Vemos um anjo, uma águia, um touro e um leão segurando livros (talvez sejam o livro da lei da Sacerdotisa) nos quatro cantos da carta. Sobre a roda, há uma esfinge portando uma espada, uma cobra em movimento descendente e uma figura que se parece com Anubis ou um demônio em movimento ascendente. O arcano aponta para a única constante na vida: a mudança. Representa o movimento perpétuo da natureza.',
+    meaning_up: 'mudança, inevitabilidade, destino',
+    meaning_rev: 'apego, estagnação, azar',
+    value: '10'
   },
   {
     id: 11,
     type: 'major',
+    filename: 'RWS_Tarot_11_Justice',
+    name: 'Justiça',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg',
+    suit: 'major',
+    desc: 'A justiça assenta-se sobriamente entre duas colunas e com uma cortina atrás de si. Para que a atravessemos, é preciso que nossas ações sejam julgadas de acordo com critérios rígidos. Ela segura uma espada na mão direita, indicando o livre arbítrio; e uma balança na mão esquerda, indicando que cada escolha tem suas consequências. Suas vestes são vermelhas com detalhes em verde. Sua sabedoria é uma espada que penetra a ilusão dos acontecimentos e das ações e encontra seus verdadeiros significados. Porém, esta espada tem dois gumes: cada escolha significa também uma perda. A Justiça  é alheia às questões meramente humanas. Ela diz respeito à harmonia cósmica e ao tempo divino.',
+    meaning_up: 'justiça, equilíbrio, karma',
+    meaning_rev: 'injustiça, desonestidade, discordância',
+    value: '11'
   },
   {
     id: 12,
     type: 'major',
+    filename: 'RWS_Tarot_12_Hanged_Man',
+    name: 'O Enforcado',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg',
+    suit: 'major',
+    desc: 'Há um homem pendurado pelo pé direito. Sua perna esquerda forma o número quatro, com o tornozelo cruzado atrás da perna direita. Sua calça é vermelha e sua camisa, azul. Em sua cabeça, há uma aura indicando a divindade. Após apreender as consequências de nossas ações na construção de nossas vidas, chegamos à aceitação. O Enforcado se rendeu ao ritmo da vida, aos ciclos incontroláveis e alheios à sua vontade. Ele convida o indivíduo a enxergar as coisas de outra perspectiva. Representa a suspensão e o sacrifício que precedem a iluminação.',
+    meaning_up: 'sacrifício, aceitação, abnegação',
+    meaning_rev: 'medo do sacrifício, recusa, egoísmo',
+    value: '12'
   },
   {
     id: 13,
     type: 'major',
+    filename: 'RWS_Tarot_13_Death',
+    name: 'Morte',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg',
+    suit: 'major',
+    desc: 'A morte cavalga sobre um campo devastado. Aos seus pés, há o cadáver de um rei deposto, uma criança que a observa com temor e uma mulher que não ousa olhar diretamente para ela. Um sacerdote faz-lhe uma súplica. A morte carrega uma bandeira negra com uma rosa branca de cinco pétalas. Ela veste uma armadura indicando que ela venceu uma batalha - afinal, ela sempre vence. No vale atrás dela, um barco atravessa um rio, levando as almas dos mortos pelo Aqueronte. Ao fundo, o sol começa a nascer entre duas torres como as do arcano XIX. É um novo dia, um novo recomeço. O sol já ilumina o seu caminho, enquanto atrás dela ainda há sombras da obscuridade inconsciente. Todo fim é um recomeço, para que se renasça é preciso morrer.',
+    meaning_up: 'renascimento, metamorfose, recomeço',
+    meaning_rev: 'apego, resistência, obsessão',
+    value: '13'
   },
   {
     id: 14,
     type: 'major',
+    filename: 'RWS_Tarot_14_Temperance',
+    name: 'Temperança',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg',
+    suit: 'major',
+    desc: 'Um anjo transfere tranquilamente o líquido de um cálice a outro. Um de seus pés está sobre a terra, e o outro, na água. O cenário é de uma vegetação exuberante, com duas flores amarelas desabrochando. Ao fundo, um caminho leva até as montanhas, sobre as quais brilha uma coroa: a coroação do desejo. O arcano representa o caminho do meio: a capacidade de lidar com situações difíceis com serenidade; o aprendizado de lidar com a vida tal qual ela se nos apresenta. Ele nos ajuda a atravessar a noite escura da alma.',
+    meaning_up: 'serenidade, paciência, harmonia',
+    meaning_rev: 'extremos, desequilíbrio, inquietação',
+    value: '14'
   },
   {
     id: 15,
     type: 'major',
+    filename: 'RWS_Tarot_15_Devil',
+    name: 'O Diabo',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg',
+    suit: 'major',
+    desc: 'O Diabo segura uma tocha apontada para baixo e tem a mão direita apontada para cima. O casal do arcano VI se encontra aqui aprisionado por suas correntes. Eles são escravos da ilusão, das aparências, do mundo material. O arcano chama ao reconhecimento da sombra para superar as ilusões e seguir com o processo de individuação. Apresenta-se num aparente paradoxo: trata-se de uma queda em direção às ilusões que é também um passo em direção à liberação. Antes de chegar ao Purgatório e ao Paraíso, é preciso passar pelo Inferno.',
+    meaning_up: 'aprisionamento, materialismo, ilusão',
+    meaning_rev: 'liberação, integração da sombra, visão',
+    value: '15'
   },
   {
     id: 16,
     type: 'major',
+    filename: 'RWS_Tarot_16_Tower',
+    name: 'A Torre',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg',
+    suit: 'major',
+    desc: 'A torre foi atingida por um raio em seu andar mais alto. O rei foi deposto. Sua coroa cai. A torre está em chamas e aqueles que a habitavam caem junto com ela. Um deles porta uma coroa. Suas roupas são azuis e vermelhas. A escuridão ao fundo e o céu nublado se iluminam com as chamas da destruição. A Torre é a prisão construída pelas satisfações apenas dos desejos do ego; a sua destruição começa com a pressão interna gerada pelo inconsciente. O aprisionamento nas ilusões e repressões àquilo que não é material encontra um jeito de ser destruído. É a iluminação que vem como um raio. Mas para chegar a ela, é preciso passar pela destruição. Dissolver e recompor.',
+    meaning_up: 'ruptura, destruição, recomposição',
+    meaning_rev: 'resistência, aprisionamento, caos',
+    value: '16'
   },
   {
     id: 17,
     type: 'major',
+    filename: 'RWS_Tarot_17_Star',
+    name: 'A Estrela',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg',
+    suit: 'major',
+    desc: 'Uma mulher verte água sobre um riacho, onde ela molha apenas a sola de um de seus pés, e sobre a terra, sobre onde ela se apóia. O pé que toca a água se equilibra suavemente sobre o lago. Ela olha para a água onde enxerga seu reflexo. Ela está nua. Ela se vê e se nutre do inconsciente, antes de nele mergulhar. O cenário é coberto por uma vegetação fértil, com flores que desabrocham, alimentadas pela água com que a mulher as rega. Ao fundo, há uma árvore sobre a qual um pássaro pousa e, ao longe, uma montanha. No céu, uma grande estrela amarela brilha no centro da carta, cercada por outras sete estrelas brancas. A água é um espelho e fonte de fertilidade.Após a crise da Torre, chegam a esperança e a transformação. Após a tormenta, a calma. A estrela ajuda o indivíduo a recuperar a fé e a esperança. É um momento de descanso, paz e renovação antes do fim da jornada.',
+    meaning_up: 'renovação, esperança, alento',
+    meaning_rev: 'degeneração, desesperança, agitação',
+    value: '17'
   },
   {
     id: 18,
     type: 'major',
+    filename: 'RWS_Tarot_18_Moon',
+    name: 'A Lua',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg',
+    suit: 'major',
+    desc: 'Um caranguejo sai da água e tem diante de si um caminho que leva às montanhas que se estendem entre duas altas colunas. O momento entre a Estrela e a Lua é o de um mergulho no inconsciente. Aqui estamos do outro lado dessa jornada. Dos dois lados desse caminho, um cachorro e um lobo uivam para a lua que ilumina o céu. Apesar de ser noite, o brilho da lua ilumina o céu. Abaixo da lua, há pequenas chamas acesas. As colunas são o outro lado dos pilares da Sacerdotisa: os portões do inconsciente. Aqui estamos num mundo de sonhos, visões e mitos. A loucura emerge à luz da lua: aqui a animalidade toma o lugar do humano. Energia lunática. O caranguejo representa os medos inomináveis que abundam as águas profundas do inconsciente. Eles nunca saem totalmente dali. Com preparo e coragem, aceitamos a loucura presente na imaginação; é então que a lua traz paz, enriquece nossa experiência e os medos são apaziguados.',
+    meaning_up: 'sonhos, inconsciente, profundidade',
+    meaning_rev: 'medo, perturbações, loucura',
+    value: '18'
   },
   {
     id: 19,
     type: 'major',
+    filename: 'RWS_Tarot_19_Sun',
+    name: 'O Sol',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg',
+    suit: 'major',
+    desc: 'O sol brilha e ilumina um campo de girassóis que se estende atrás de um muro. Os girassóis se voltam para quem olha a carta. À frente, uma criança com uma coroa de flores e uma pluma vermelha em seus cabelos se equilibra alegremente sobre um cavalo branco, segurando uma bandeira vermelha que esvoaça ao vento. Acaba a noite escura da alma. O Sol representa a clareza, uma visão límpida e lúcida; a unidade com o universo a partir da vida que há em si e que irradia na natureza iluminada pelo sol.',
+    meaning_up: 'iluminação, consciência, felicidade',
+    meaning_rev: 'confusão, depressão, pessimismo',
+    value: '19'
   },
   {
     id: 20,
     type: 'major',
+    filename: 'RWS_Tarot_20_Judgement',
+    name: 'Julgamento',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg',
+    suit: 'major',
+    desc: 'Soam as trombetas. Um anjo de asas vermelhas e cabelo de fogo toca a trombeta do Apocalipse. Os corpos ressuscitam em seus caixões e recebem a glória da ressurreição.Os caixões flutuam sobre as águas, do outro lado das montanhas. Somos julgados antes de podermos ascender ao estado de plena realização. O arcano representa a ressurreição. É o momento de confrontar-se com as experiências passadas para ultrapassá-las. Tem-se um novo entendimento. A percepção da mudança vem depois que ela já aconteceu; o Julgamento implica que não temos outra escolha senão abraçá-la.',
+    meaning_up: 'ressurreição, realização, ascensão',
+    meaning_rev: 'ruína, resistência, destruição',
+    value: '20'
   },
   {
     id: 21,
     type: 'major',
+    filename: 'RWS_Tarot_21_World',
+    name: 'O Mundo',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg'
-  }
-]
-
-const cards_swords = [
+      'https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg',
+    suit: 'major',
+    desc: 'Uma mulher dança satisfeita, suspensa no céu, envolvida por um longo pano roxo. Ela segura duas varinhas e está no centro de uma coroa de louros com forma oval. Nos cantos da carta, há um homem, uma águia, um touro e um leão. O Mundo é a restituição da unidade do Louco; a dançarina é a alma do mundo, plena de sabedoria e do conhecimento da ilusão da separação. O arcano representa o movimento constante onde reside a unidade, a completude, o fim da jornada que é também o reinício do processo, pois há sempre algo a ser buscado.',
+    meaning_up: 'completude, satisfação, unidade',
+    meaning_rev: 'estagnação, desconexão, frustração',
+    value: '21'
+  },
   {
-    id: 1,
+    id: 22,
     type: 'minor',
+    name: 'Ás de Espadas',
+    filename: 'Swords01',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Uma mão saída de uma nuvem no céu segura uma espada sobre a qual há uma coroa e folhagens. Em volta da espada, há pequenas chamas. Ao fundo, vemos montanhas. A espada atravessa a coroa do mundo material e representa pensamentos e ações a nível intelectual. É o corte que permite começos harmônicos.',
+    meaning_up: 'racionalidade, intelecto, discernimento',
+    meaning_rev: 'ilusão, confusão mental, engano',
+    value: '1'
   },
   {
-    id: 2,
+    id: 23,
     type: 'minor',
+    name: 'Dois de Espadas',
+    filename: 'Swords02',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Swords02.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Uma mulher vendada segura duas espadas nas mãos, barrando o acesso à água que se estende até as montanhas ao longe atrás de si. Ela veste branco e está sentada sobre um banco de pedra. A lua minguante ilumina o céu. A personagem petrificada enfrenta um dilema, mas encontra-se em estado de inércia; seu equilíbrio é precário. A venda em seus olhos indica a decisão deliberada de não ver. Seus braços cruzados sobre o peito indicam um bloqueio emocional.',
+    meaning_up: 'inércia, indecisão, dilema',
+    meaning_rev: 'erro, malogro, desequilíbrio',
+    value: '2'
   },
   {
-    id: 3,
+    id: 24,
     type: 'minor',
+    name: 'Três de Espadas',
+    filename: 'Swords03',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Swords03.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Um coração é perfurado por três espadas. O céu está cinza. Chove. Esta carta representa o coração partido: dor, luto, desolação. É um momento sombrio.',
+    meaning_up: 'coração partido, dor, luto',
+    meaning_rev: 'traumas não resolvidos, languidez, não-aceitação',
+    value: '3'
   },
   {
-    id: 4,
+    id: 25,
     type: 'minor',
+    name: 'Quatro de Espadas',
+    filename: 'Swords04',
     image: 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Swords04.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Um homem está deitado sobre uma mesa dentro de uma igreja com as palmas da mão unidas sobre o peito. Três espadas decoram o ambiente enquanto uma quarta está estendida a seu lado. O homem parece morto, mas medita. A igreja é  como uma tumba pela quietude. A carta representa o descanso fundado sobre as estruturas intelectuais; serenidade, calma, trégua e reclusão. Não representa a morte, e sim o isolamento.',
+    meaning_up: 'meditação, descanso, reclusão',
+    meaning_rev: 'fim do isolamento, despertar, inquietude',
+    value: '4'
   },
   {
-    id: 5,
+    id: 26,
     type: 'minor',
+    name: 'Cinco de Espadas',
+    filename: 'Swords05',
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Swords05.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'O céu está nublado e agitado. Perto do rio, houve uma batalha entre três personagens. O ganhador carrega três espadas e está prestes a recolher do chão as espadas de seus adversários. O ganhador foi desleal. A carta representa a deslealdade, a hipocrisia e a baixeza. Trata-se de uma falsa vitória que trará infelicidade.',
+    meaning_up: 'batalha perdida, humilhação, baixeza',
+    meaning_rev: 'forças renovadas, revanche, aprendizado',
+    value: '5'
   },
   {
-    id: 6,
+    id: 27,
     type: 'minor',
+    name: 'Seis de Espadas',
+    filename: 'Swords06',
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Swords06.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Um barqueiro faz a travessia com uma pessoa com a cabeça coberta e um menino. Há seis espadas no barco. Eles atravessam a calmaria da água. Não vemos os rostos das personagens, mas enxergamos, à distância, a outra margem do rio. As espadas não pesam no barco e não o fazem afundar. Elas são a bagagem que devemos carregar. A carta representa uma passagem silenciosa por tempos difíceis, ou um período de transição. É hora de virar a página.',
+    meaning_up: 'travessia, retirada, passagem',
+    meaning_rev: 'apego, hesitação, relutância',
+    value: '6'
   },
   {
-    id: 7,
+    id: 28,
     type: 'minor',
+    name: 'Sete de Espadas',
+    filename: 'Swords07',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Swords07.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Um homem carrega cinco espadas sorrateiramente. Há outras duas espadas atrás dele. Ao fundo, um grupo de pessoas está reunido. Elas não vêem o homem que sai do acampamento. O personagem faz uma retirada silenciosa e solitária, diria-se que ele foge. O ladrão incorre em mentiras, sabotagens e deslealdade.',
+    meaning_up: 'deslealdade, sabotagem, retirada',
+    meaning_rev: 'cooperação, perspicácia, ímpeto',
+    value: '7'
   },
   {
-    id: 8,
+    id: 29,
     type: 'minor',
+    name: 'Oito de Espadas',
+    filename: 'Swords08',
     image: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Swords08.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Uma mulher está amarrada e vendada entre 8 espadas longe dos limites do castelo. O céu está cinza e o terreno sobre o qual as espadas estão fincadas é pantanoso. Nada a impede de deixar sua suposta prisão, já que as espadas não a prendem, bem como as cordas não amarram suas pernas. A venda simboliza a mistificação, e as espadas representam restrições, prisões e impotência. Ela não vê saída da situação, embora nada a prenda; a prisão foi construída por ela mesma e é possível, portanto, sair dela. Basta dar um passo à frente.',
+    meaning_up: 'prisão, autoimposição, cegueira',
+    meaning_rev: 'libertação, entendimento, saída',
+    value: '8'
   },
   {
-    id: 9,
+    id: 30,
     type: 'minor',
+    name: 'Nove de Espadas',
+    filename: 'Swords09',
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Swords09.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Uma pessoa acorda no meio da noite e segura o rosto entre as mãos. Nove espadas adornam a parede ao lado da qual está sua cama. Na cama, há o entalhe de uma cena de batalha. A colcha que cobre a cama é bordada com rosas e os símbolos dos signos do zodíaco. Suas preocupações são pesadelos que a mantém acordada à noite.',
+    meaning_up: 'preocupações, ansiedade, angústia',
+    meaning_rev: 'entendimento, recuperação, calma',
+    value: '9'
   },
   {
-    id: 10,
+    id: 31,
     type: 'minor',
+    name: 'Dez de Espadas',
+    filename: 'Swords10',
     image: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords10.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'O corpo de um homem está estendido no chão com 10 espadas cravadas ao longo de sua coluna vertebral. Há sangue ao redor. Ao fundo, vemos a água, as montanhas e um céu turbulento. O sol está nascendo. Ao mesmo tempo, o céu negro se dissipia, indicando a liberação. A situação não é tão ruim quanto parece.',
+    meaning_up: 'batalha perdida, sofrimento, exagero',
+    meaning_rev: 'liberação, recomeço, perseverança',
+    value: '10'
   },
   {
-    id: 11,
+    id: 32,
     type: 'minor',
+    name: 'Pajem de Espadas',
+    filename: 'Swords11',
     image: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Swords11.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'O personagem brande sua espada com confiança em uma paisagem campestre ao fundo da qual vemos as montanhas. Ele observa algo que vem atrás dele atentamente e está pronto para o ataque, caso seja preciso. Ele possui uma mente afiada e vigilante, é curioso e atento.',
+    meaning_up: 'comunicação, curiosidade, mente afiada',
+    meaning_rev: 'paranoia, inércia, insensatez',
+    value: '11'
   },
   {
-    id: 12,
+    id: 33,
     type: 'minor',
+    name: 'Cavaleiro de Espadas',
+    filename: 'Swords12',
     image: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Swords12.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'O personagem brande sua espada e grita com bravura. Ele cavalga rapidamente em direção à tempestade. Ele age antes mesmo de pensar. Apesar de determinado, é imprudente.',
+    meaning_up: 'força, determinação, defesa',
+    meaning_rev: 'imprudência, fanatismo, excesso',
+    value: '12'
   },
   {
-    id: 13,
+    id: 34,
     type: 'minor',
+    name: 'Rainha de Espadas',
+    filename: 'Swords13',
     image: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords13.jpg',
-    suit: 'swords'
+    suit: 'swords',
+    desc: 'Enxergamos a rainha de perfil, com um olhar severo, segurando uma espada na mão direita enquanto estende a mão esquerda apontando para seus súditos. Ao fundo, as nuvens encobrem a paisagem e um pássaro sobrevoa a cena. Severa mas honesta, ela toma decisões acertadas. Sabe comunicar-se com eloquência e conciliar adversidades com sabedoria.',
+    meaning_up: 'eloquência, sabedoria, clareza',
+    meaning_rev: 'rigidez, tolice, dissimulação',
+    value: '13'
   },
   {
-    id: 14,
+    id: 35,
     type: 'minor',
+    name: 'Rei de Espadas',
+    filename: 'Swords14',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg',
-    suit: 'swords'
-  }
-]
-
-const cards_wands = [
+    suit: 'swords',
+    desc: 'Com olhar severo, o rei segura uma espada na mão direita e se senta em seu trono de pedra. Ao fundo, no céu claro, um pássaro revoa e algumas nuvens cobrem o horizonte. Ele olha diretamente para nós, colocando a verdade diante de nós. Ele tem a capacidade de tomar decisões de modo racional e objetivo, a partir da análise e do intelecto, porém tem altos padrões e exigências em relação a valores éticos e morais. É uma pessoa severa, fria e julgadora que pode tender à arrogância.',
+    meaning_up: 'padrões elevados, racionalidade, discernimento',
+    meaning_rev: 'frieza, arrogância, corrupção',
+    value: '14'
+  },
   {
-    id: 1,
+    id: 36,
     type: 'minor',
+    name: 'Ás de Bastos',
+    filename: 'Wands01',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Uma mão saída de uma nuvem no céu segura um galho de árvore de onde brotam algumas folhas verdes. A paisagem ao fundo é campestre. Um rio corre em direção às montanhas e um castelo se ergue no alto de uma colina. A carta simboliza uma ação que parte do impulso e da vontade.',
+    meaning_up: 'otimismo, criação,  oportunidade',
+    meaning_rev: 'caos, desmoronamento, descontentamento',
+    value: '1'
   },
   {
-    id: 2,
+    id: 37,
     type: 'minor',
+    name: 'Dois de Bastos',
+    filename: 'Wands02',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Wands02.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Um homem olha para o horizonte enquanto segura um globo terrestre na mão direita e um basto na mão esquerda. Os dois bastos formam um pilar que o protege. Ele está num terraço e ao fundo, há uma cidade atrás da qual vemos as montanhas e um lago. O personagem é um conquistador: ele tem o mundo em suas mãos e já conquistou seu reino. Porém, ele ainda olha à frente: tem ambição.',
+    meaning_up: 'ambição, novas conquistas, inquietude',
+    meaning_rev: 'indiferença, medo, desinteresse',
+    value: '2'
   },
   {
-    id: 3,
+    id: 38,
     type: 'minor',
+    name: 'Três de Bastos',
+    filename: 'Wands03',
     image: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Wands03.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Um homem observa de um lugar alto o mar dourado que se estende à sua frente onde três barcos navegam. O mar o separa das montanhas, seu objetivo. Ele veste uma armadura sob suas roupas de andarilho e usa um basto como apoio na sua caminhada. Ele envia seus navios em exploração enquanto ele permanece no mesmo lugar. Ou talvez os navios estejam retornando com os resultados dessa exploração. A carta representa uma abertura para o novo ao mesmo tempo em que se conserva bases sólidas. É o momento de executar planos, observar acontecimentos e aguardar notícias ou encomendas. Nos convida a colocar visões em perspectiva.',
+    meaning_up: 'conquista, planos, exploração',
+    meaning_rev: 'projetos fracassados, reavaliação, comodismo',
+    value: '3'
   },
   {
-    id: 4,
+    id: 39,
     type: 'minor',
+    name: 'Quatro de Bastos',
+    filename: 'Wands04',
     image: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Wands04.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Os quatro bastos formam uma espécie de caramanchão coberto de plantas. É um dia de festa e de celebração. Duas pessoas brandem buquês de flores e, mais ao fundo, outros chegam para a festa. Há um castelo com uma torre e uma ponte ao fundo da peça. O dia está claro. É um momento de celebração e estabilidade.',
+    meaning_up: 'celebração, otimismo, harmonia',
+    meaning_rev: 'celebração frustrada, pequenos desentendimentos, festa',
+    value: '4'
   },
   {
-    id: 5,
+    id: 40,
     type: 'minor',
+    name: 'Cinco de Bastos',
+    filename: 'Wands05',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Wands05.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Cinco personagens que seguram um basto cada lutam usando os bastos como se fossem espadas. A carta representa uma luta ou uma dança, que pode ser por esporte ou por conflitos. São conflitos menores que podem levar à desordem. Ela nos convida a levar estas tensões na esportiva.',
+    meaning_up: 'conflitos, luta, brincadeira',
+    meaning_rev: 'conflitos sérios, severidade excessiva, desacordo',
+    value: '5'
   },
   {
-    id: 6,
+    id: 41,
     type: 'minor',
+    name: 'Seis de Bastos',
+    filename: 'Wands06',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Wands06.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Um homem cavalga em uma parada carregando um bastão com uma guirlanda de pentáculos como coroa. Uma multidão o celebra, seguindo a pé a seu lado e levando os outros 5 bastos. A carta representa a vitória, a fama e o reconhecimento público. Objetivos foram alcançados, metas foram realizadas.',
+    meaning_up: 'vitória, reconhecimento público, êxito',
+    meaning_rev: 'derrotismo, arrogância, fracasso',
+    value: '6'
   },
   {
-    id: 7,
+    id: 42,
     type: 'minor',
+    name: 'Sete de Bastos',
+    filename: 'Wands07',
     image: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Wands07.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'No alto de um penhasco, um jovem usa um bastão para se defender de outros seis que se erguem em sua direção. A luta acontece acima das dificuldades que se apresentam. Há determinação de vencer as adversidades.',
+    meaning_up: 'conflito, defesa, determinação',
+    meaning_rev: 'limitações, ameaças, aflição',
+    value: '7'
   },
   {
-    id: 8,
+    id: 43,
     type: 'minor',
+    name: 'Oito de Bastos',
+    filename: 'Wands08',
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Wands08.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Oito bastões se suspendem paralelamente no ar diante da paisagem campestre onde vemos um rio e uma colina. É o momento de um movimento rápido e harmônico.',
+    meaning_up: 'velocidade, ordem, deslocamento',
+    meaning_rev: 'inconclusão, crise, dissonância',
+    value: '8'
   },
   {
-    id: 9,
+    id: 44,
     type: 'minor',
+    name: 'Nove de Bastos',
+    filename: 'Tarot_Nine_of_Wands',
     image:
       'https://upload.wikimedia.org/wikipedia/commons/4/4d/Tarot_Nine_of_Wands.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Um homem se apoia sobre um bastão enquanto olha desconfiado para os oito demais que se estendem atrás dele. Ele tem um curativo em volta da cabeça. Ao fundo, vemos uma paisagem com montanhas. Mesmo ferido e cansado, ele não se dá por vencido. Desconfiado e defensivo, ele tem determinação e resiliência.',
+    meaning_up: 'desconfiança, determinação, resiliência',
+    meaning_rev: 'vulnerabilidade, derrota, esforço vão',
+    value: '9'
   },
   {
-    id: 10,
+    id: 45,
     type: 'minor',
+    name: 'Dez de Bastos',
+    filename: 'Wands10',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Wands10.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Um homem carrega com dificuldade dez bastos. Ele se dirige à casa ao fundo da carta. A carga o impede de ver o caminho à sua frente. Ele se dobra para carregar as responsabilidades que ele mesmo infligiu sobre si.',
+    meaning_up: 'responsabilidades, peso, autoimposição',
+    meaning_rev: 'colapso, renúncia ao fardo, resignação',
+    value: '10'
   },
   {
-    id: 11,
+    id: 46,
     type: 'minor',
+    name: 'Pajem de Bastos',
+    filename: 'Wands11',
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Wands11.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'Em um deserto, o personagem cuida de seu bastão. Aqui, ele é um instrumento que o ajuda na caminhada, dando-lhe direção. Ele veste roupas elegantes e um chapéu com uma pluma. Representa a paixão, a vontade e a coragem.',
+    meaning_up: 'paixão, projetos, energia',
+    meaning_rev: 'indecisão, instabilidade, medo',
+    value: '11'
   },
   {
-    id: 12,
+    id: 47,
     type: 'minor',
+    name: 'Cavaleiro de Bastos',
+    filename: 'Wands12',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Wands12.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'No deserto, o personagem cavalga bravamente. Ele carrega o seu bastão com confiança e suas roupas portam o emblema da salamandra. A crina de seu cavalo se assemelha a chamas. Ele é um espírito livre que se movimenta com harmonia, elegância e rapidez em direção a suas metas.',
+    meaning_up: 'determinação, movimento, aventura',
+    meaning_rev: 'confusão, projetos interrompidos, colapso',
+    value: '12'
   },
   {
-    id: 13,
+    id: 48,
     type: 'minor',
+    name: 'Rainha de Bastos',
+    filename: 'Wands13',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Wands13.jpg',
-    suit: 'wands'
+    suit: 'wands',
+    desc: 'A rainha está sentada em seu trono decorado com leões no deserto, segurando um bastão na mão direita e um girassol na mão esquerda. Em seu rosto há uma expressão de determinação. À sua frente, há um gato preto. Sua intuição volta-se à ação. É uma líder independente e reina com vitalidade.',
+    meaning_up: 'determinação, satisfação, vitalidade',
+    meaning_rev: ' engano, deslealdade, amargura',
+    value: '13'
   },
   {
-    id: 14,
+    id: 49,
     type: 'minor',
+    name: 'Rei de Bastos',
+    filename: 'Wands14',
     image: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg',
-    suit: 'wands'
-  }
-]
-
-const cards_cups = [
+    suit: 'wands',
+    desc: 'Seu trono se ergue sobre o deserto decorado com salamandras, animal que também se encontra a seus pés. Sua coroa é decorada com chamas de ouro e suas roupas possuem a cor do fogo. O rei segura um bastão em sua mão direita e mira o horizonte à sua frente. Sua autoridade se volta para a ação e sua liderança leva à superação dos obstáculos.',
+    meaning_up: 'autoridade, ação, superação',
+    meaning_rev: 'intolerância, cinismo, cautela',
+    value: '14'
+  },
   {
-    id: 1,
+    id: 50,
     type: 'minor',
+    name: 'Ás de Copas',
+    filename: 'Cups01',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Uma mão saída de uma nuvem no céu se estende para oferecer um cálice que transborda sobre a água, sobre cuja superfície há plantas e flores. Uma pomba branca deposita uma moeda sobre o cálice. A carta representa um momento de alegria e amor.',
+    meaning_up: 'novos sentimentos, amor, felicidade',
+    meaning_rev: 'infelicidade, cisma, deterioração',
+    value: '1'
   },
   {
-    id: 2,
+    id: 51,
     type: 'minor',
+    name: 'Dois de Copas',
+    filename: 'Cups02',
     image: 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Um homem e uma mulher bem-vestidos e coroados compartilham seus cálices um com o outro. Sobre eles, há a face alada de um leão e um caduceu.Ao fundo, há uma casa sobre uma colina. A carta representa uma relação bela, harmônica e espiritual; uma união que frutifica.',
+    meaning_up: 'união, relacionamento harmonioso, complementaridade',
+    meaning_rev: 'desarmonia, relacionamento acabado, desequilíbrio',
+    value: '2'
   },
   {
-    id: 3,
+    id: 52,
     type: 'minor',
+    name: 'Três de Copas',
+    filename: 'Cups03',
     image: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Cups03.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Três mulheres brindam e celebram a colheita abundante que se estende a seus pés.É uma carta de celebração, amizade e cumplicidade.',
+    meaning_up: 'amizade, integração social, cumplicidade',
+    meaning_rev: 'desilusão, inimizade, desunião',
+    value: '3'
   },
   {
-    id: 4,
+    id: 53,
     type: 'minor',
+    name: 'Quatro de Copas',
+    filename: 'Cups04',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Cups04.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Um homem está sentado à sombra de uma árvore em um campo verde. Seus braços estão cruzados e sua expressão é de insatisfação. Ele observa três cálices à sua frente, enquanto recusa aquele que a mão lhe oferece. Ensimesmado, ele desperdiça as oportunidades que se lhe oferecem. Ele não se entusiasma com o mundo exterior, mas necessita buscar as respostas dentro de si.',
+    meaning_up: 'apatia, desinteresse, isolamento',
+    meaning_rev: 'entusiasmo, oportunidades, busca interior',
+    value: '4'
   },
   {
-    id: 5,
+    id: 54,
     type: 'minor',
+    name: 'Cinco de Copas',
+    filename: 'Cups05',
     image: 'https://upload.wikimedia.org/wikipedia/commons/d/d7/Cups05.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Uma pessoa cabisbaixa vestida de preto observa três cálices caídos e o líquido derramado diante de si. Atrás dele, há dois cálices em pé. A pessoa está diante de um rio, perto de uma ponte que leva até uma casa ao longe. A carta representa a decepção e a autocomiseração, e convida a questionar se não se está dando demasiada atenção a elementos negativos. A saída é a ponte, ela aponta para o futuro com a aceitação dessa situação. É o momento de encontrar a aceitação no luto.',
+    meaning_up: 'desolação, depressão, autopiedade',
+    meaning_rev: 'emoções reprimidas, autoaceitação, esperança',
+    value: '5'
   },
   {
-    id: 6,
+    id: 55,
     type: 'minor',
+    name: 'Seis de Copas',
+    filename: 'Cups06',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Cups06.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Duas crianças, um menino e uma menina, brincam tranquilamente no pátio de uma casa enquanto um adulto deixa o local. O menino oferece um cálice com flores à menina. Há outros cinco cálices iguais a este na cena. A carta remete à infância, à nostalgia e à memória.',
+    meaning_up: 'infância, nostalgia, alegria',
+    meaning_rev: 'traumas, futuro, alheamento',
+    value: '6'
   },
   {
-    id: 7,
+    id: 56,
     type: 'minor',
+    name: 'Sete de Copas',
+    filename: 'Cups07',
     image: 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Cups07.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Uma pessoa observa uma nuvem com sete cálices à sua frente. Em cada cálice, há um objeto diferente. Uma cabeça, uma pessoa com o rosto e o tronco cobertos por um pano resplandecente, uma cobra, um castelo, jóias, uma coroa de pentáculos (em cujo cálice vemos uma caveira) e um dragão. Enfeitiçado com as possibilidades, o personagem se deixa levar por sonhos, ilusões e fantasias. É preciso escolher um caminho para que o castelo de ar se desfaça.',
+    meaning_up: 'ilusões, sonhar acordado, indecisão',
+    meaning_rev: 'escolha, convicção, visão',
+    value: '7'
   },
   {
-    id: 8,
+    id: 57,
     type: 'minor',
+    name: 'Oito de Copas',
+    filename: 'Cups08',
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Cups08.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Uma pessoa vestida de vermelho caminha com a ajuda de um bastão de caminhada para longe de oito cálices cheios. Ela está de costas e já não olha para trás. A paisagem é repleta de montanhas e um rio corre ao longo do caminho traçado pela personagem. Um eclipse está visível no céu. Ela sai em busca de algo mais elevado; sua peregrinagem é em busca de sua verdade. As copas cheias representam algo bom que é, contudo, deixado para trás pois a busca é de elevação espiritual.',
+    meaning_up: 'peregrinagem, busca, espiritualidade',
+    meaning_rev: 'renúncia, incapacidade de partir, momento errado',
+    value: '8'
   },
   {
-    id: 9,
+    id: 58,
     type: 'minor',
+    name: 'Nove de Copas',
+    filename: 'Cups09',
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Cups09.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Um homem está sentado sobre um banco de madeira com os braços cruzados. Ele usa roupas elegantes e um turbante na cabeça. Atrás dele, há uma estante coberta por um pano azul sobre a qual há 9 cálices cheios. Os cálices são troféus que representam ganhos e desejos realizados. Ele está satisfeito com suas recompensas.',
+    meaning_up: 'realização, satisfação, recompensas',
+    meaning_rev: 'realização, satisfação, recompensas',
+    value: '9'
   },
   {
-    id: 10,
+    id: 59,
     type: 'minor',
+    name: 'Dez de Copas',
+    filename: 'Cups10',
     image: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Cups10.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Um casal estende as mãos aos céus em um gesto celebratório. Duas crianças brincam alegremente perto deles. Ao fundo, vemos uma casa. Um rio corre em sua direção em meio às montanhas e à vegetação abundante. No céu, dez cálices formam um arco-íris. É o fim de tempos difíceis.',
+    meaning_up: 'harmonia, alegria, celebração',
+    meaning_rev: 'desarmonia, dificuldades, sofrimento',
+    value: '10'
   },
   {
-    id: 11,
+    id: 60,
     type: 'minor',
+    name: 'Pajem de Copas',
+    filename: 'Cups11',
     image: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Cups11.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'O personagem está à beira de um rio. Ele segura um cálice de onde sai um peixe, para o qual ele olha satisfeito. Ele veste roupas em tons de azul e vermelho claro. Representa os sentimentos, as emoções e a criatividade.',
+    meaning_up: 'sensibilidade, criatividade, idealismo',
+    meaning_rev: 'ilusões, devaneios, desconexão',
+    value: '11'
   },
   {
-    id: 12,
+    id: 61,
     type: 'minor',
+    name: 'Cavaleiro de Copas',
+    filename: 'Cups12',
     image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Cups12.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Perto de um riacho, o cavaleiro segue seu caminho, oferecendo um cálice cheio com calma e equilíbrio. Sua armadura é ornamentada com as asas de mercúrio nos pés e na cabeça. Ele entrega sentimentos sinceros e profundos. É o mensageiro da espiritualidade e das emoções. Tem capacidade de explorar seu mundo interior, porém oscila entre a ação e a passividade.',
+    meaning_up: 'entrega, sentimentos profundos, espiritualidade',
+    meaning_rev: 'passividade, isolamento, platonismo',
+    value: '12'
   },
   {
-    id: 13,
+    id: 62,
     type: 'minor',
+    name: 'Rainha de Copas',
+    filename: 'Cups13',
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Cups13.jpg',
-    suit: 'cups'
+    suit: 'cups',
+    desc: 'Seu trono fica na borda da água. A rainha segura um cálice ornamentado e fechado e o encara com frieza. O posicionamento de seu trono sugere o direcionamento da criatividade à atividade. Ela esbanja estabilidade e maturidade emocional. Tem contato com o inconsciente ao mesmo tempo em que mantém os pés no chão.',
+    meaning_up: 'estabilidade, equilíbrio emocional, intuição',
+    meaning_rev: 'desequilíbrio emocional, instabilidade, insensatez',
+    value: '13'
   },
   {
-    id: 14,
+    id: 63,
     type: 'minor',
+    name: 'Rei de Copas',
+    filename: 'Cups14',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Cups14.jpg',
-    suit: 'cups'
-  }
-]
-
-const cards_pents = [
+    suit: 'cups',
+    desc: 'Seu trono se ergue sobre a água. Nas ondas atrás dele vemos um barco navegando e um peixe pulando para fora dela. O rei segura um cálice na mão direita e um cetro na mão esquerda. Um broche em forma de peixe fecha o seu manto. Seu olhar é sério. Maduro e emocionalmente estável, ele navega o mar dos sentimentos e emoções com tranquilidade. Ele sabe lidar com seus impulsos e direcionar sua criatividade para o sucesso.',
+    meaning_up: 'equilíbrio, estabilidade, maturidade',
+    meaning_rev: 'emoções agitadas, autocensura, impulsividade',
+    value: '14'
+  },
   {
-    id: 1,
+    id: 64,
     type: 'minor',
+    name: 'Ás de Pentáculos',
+    filename: 'Pents01',
     image: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Uma mão saída de uma nuvem no céu se estende para oferecer uma moeda dourada. A paisagem é a de uma natureza fértil. Uma trilha se estende em direção às montanhas. Há um portão de cerca viva que indica o caminho a ser seguido. A carta nos convida a reconhecer a magia naquilo que é natural e mundano para em seguida ir além, em direção às montanhas.',
+    meaning_up: 'prosperidade, abundância, caminhos abertos',
+    meaning_rev: 'impedimentos, penúria, escassez',
+    value: '1'
   },
   {
-    id: 2,
+    id: 65,
     type: 'minor',
+    name: 'Dois de Pentáculos',
+    filename: 'Pents02',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Pents02.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Um homem que se assemelha a um bufão tenta equilibrar duas moedas, fazendo um malabarismo com elas. As duas moedas se unem pelo símbolo do infinito. Atrás dele, dois barcos navegam em um mar agitado. Ele é um malabarista.',
+    meaning_up: 'malabarismo, jogo, multitarefa',
+    meaning_rev: 'desmoronamento, esmorecimento, equilíbrio precário',
+    value: '2'
   },
   {
-    id: 3,
+    id: 66,
     type: 'minor',
+    name: 'Três de Pentáculos',
+    filename: 'Pents03',
     image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Pents03.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Dois religiosos e um aprendiz discutem sobre o trabalho a ser feito na catedral. Não vemos o estado dela, não sabemos em que estágio se encontra a obra, uma vez que só vemos a sombra.',
+    meaning_up: 'construção, alianças, trabalho em equipe',
+    meaning_rev: 'preguiça, mediocridade, planos mal construídos',
+    value: '3'
   },
   {
-    id: 4,
+    id: 67,
     type: 'minor',
+    name: 'Quatro de Pentáculos',
+    filename: 'Pents04',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Pents04.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Um homem sentado sobre um cubo de pedra longe da cidade abraça uma moeda como quem tenta protegê-la. Há outra moeda sobre a coroa em sua cabeça, e os seus pés se apóiam sobre outras duas. A carta representa a ganância, a possessividade e a avareza. Pode apontar para a necessidade de fazer economias e cuidar de seus recursos.',
+    meaning_up: 'avareza, materialismo, ganância',
+    meaning_rev: 'generosidade, economias, esbanjamento',
+    value: '4'
   },
   {
-    id: 5,
+    id: 68,
     type: 'minor',
+    name: 'Cinco de Pentáculos',
+    filename: 'Pents05',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Pents05.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Dois indigentes passam em frente a uma igreja. Neva. Uma das personagens anda com a ajuda de muletas e a outra se protege do frio cerrando seu xale, que está velho e cheio de buracos. São tempos difíceis, de dificuldades, pobreza, enfermidades. Não se vê a porta da igreja - os indigentes foram esquecidos ou não encontraram conforto onde poderiam encontrá-lo.',
+    meaning_up: 'pobreza, enfermidades, dificuldades',
+    meaning_rev: 'recuperação, conforto, cura',
+    value: '5'
   },
   {
-    id: 6,
+    id: 69,
     type: 'minor',
+    name: 'Seis de Pentáculos',
+    filename: 'Pents06',
     image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Pents06.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Um homem bem-vestido segura uma balança na mão esquerda enquanto distribui moedas a dois pobres a seus pés. Eles estão fora da cidade. A balança simboliza a Justiça; o homem vestido de mercador representa as forças cármicas. Há uma relação hierárquica e balanceada entre as personagens da carta. Um dá o que não lhe faz falta e que os demais podem receber. Os outros recebem o que é possível absorver daquilo que lhes é oferecido. O arcano representa a generosidade, a harmonia e o equilíbrio; a abundância de bens materiais, prêmios, ganhos e lucros.',
+    meaning_up: 'caridade, generosidade, abundância',
+    meaning_rev: 'egoísmo, vileza, avareza',
+    value: '6'
   },
   {
-    id: 7,
+    id: 70,
     type: 'minor',
+    name: 'Sete de Pentáculos',
+    filename: 'Pents07',
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Pents07.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Um homem descansa o queixo sobre uma enxada enquanto observa uma vinha onde há 6 moedas. Aos seus pés, há um pentáculo e, atrás dele, podemos ver as montanhas. Ele contempla os frutos de seu trabalho. Seus esforços serão recompensados, basta ter paciência.',
+    meaning_up: 'espera, paciência, recompensa',
+    meaning_rev: 'insatisfação, ansiedade, precipitação',
+    value: '7'
   },
   {
-    id: 8,
+    id: 71,
     type: 'minor',
+    name: 'Oito de Pentáculos',
+    filename: 'Pents08',
     image: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Pents08.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Um homem usa suas ferramentas para consertar uma moeda. Ele está concentrado em seu trabalho, longe das distrações da cidade. Há seis moedas pregadas sobre o tronco da árvore e aos pés da personagem. Ele é um artesão que faz um trabalho minucioso com concentração e técnica. Ele sabe que o trabalho deve ter uma relação com o mundo exterior, ainda que seja realizado fora dele.',
+    meaning_up: 'trabalho, concentração, técnica',
+    meaning_rev: 'impaciência, frustração, insatisfação',
+    value: '8'
   },
   {
-    id: 9,
+    id: 72,
     type: 'minor',
+    name: 'Nove de Pentáculos',
+    filename: 'Pents09',
     image: 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Pents09.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Em frente a um vinhedo pleno de frutos, um falcão pousa sobre a mão de uma mulher bem-vestida. A mulher segura uma moeda e outras oito se estendem ao seu redor. Um caramujo passa em frente aos pés da mulher. Ela soube conquistar seu lugar ao sol; criar-se a si mesma a partir das condições que se apresentaram a ela com paciência. Se hoje vive com abundância e prosperidade, é porque ela sabia o que queria e fez as escolhas que a permitiam atingir seus objetivos.',
+    meaning_up: 'autossuficiência, autoestima, realização',
+    meaning_rev: 'indecisão, indisciplina, baixa autoestima',
+    value: '9'
   },
   {
-    id: 10,
+    id: 73,
     type: 'minor',
+    name: 'Dez de Pentáculos',
+    filename: 'Pents10',
     image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Pents10.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Um homem de cabelos e barba brancos está sentado vestindo uma roupa com uvas. Há dois adultos, uma criança e dois cachorros ao seu redor. A atmosfera é familiar. Os personagens estão na entrada de uma casa, onde vemos um brasão e dez moedas que formam o desenho da árvore da vida. A carta representa a prosperidade de uma genealogia.',
+    meaning_up: 'heranças, ancestralidade, culminação',
+    meaning_rev: 'herança ruim, declínio, esterilidade',
+    value: '10'
   },
   {
-    id: 11,
+    id: 74,
     type: 'minor',
+    name: 'Pajem de Pentáculos',
+    filename: 'Pents11',
     image: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Pents11.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Em um campo florido ao fundo do qual as montanhas se estendem, o personagem observa sua moeda com admiração e ambição. Ele é um estudante. Ambicioso e diligente, fascina-se por seus objetivos.',
+    meaning_up: 'ambição, diligência aprendizado',
+    meaning_rev: 'dispersão, presunção, ignorância',
+    value: '11'
   },
   {
-    id: 12,
+    id: 75,
     type: 'minor',
+    name: 'Cavaleiro de Pentáculos',
+    filename: 'Pents12',
     image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Pents12.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'O personagem observa a vastidão à sua frente sobre seu cavalo enquanto segura uma moeda em um gesto de oferecimento. Sua armadura e seu cavalo são decorados com ramos de folhas verdes. Ele segue o caminho traçado com paciência, pois sabe que o trabalho duro e constante frutifica.',
+    meaning_up: 'diligência, responsabilidade, paciência',
+    meaning_rev: 'inércia, ociosidade, dispersão',
+    value: '12'
   },
   {
-    id: 13,
+    id: 76,
     type: 'minor',
+    name: 'Rainha de Pentáculos',
+    filename: 'Pents13',
     image: 'https://upload.wikimedia.org/wikipedia/commons/8/88/Pents13.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Seu trono está no meio da vegetação abundante com as montanhas ao fundo. Os galhos de uma árvore emolduram a cena. Perto dele, há um coelho. A rainha segura uma moeda em seu colo e a observa como se o nutrisse. Ela proporciona apoio emocional e material. Autossuficiente, sabe administrar seus recursos da melhor maneira que lhe convém.',
+    meaning_up: 'autossuficiência, fertilidade, prosperidade',
+    meaning_rev: 'baixa autoestima, escassez, subserviência',
+    value: '13'
   },
   {
-    id: 14,
+    id: 77,
     type: 'minor',
+    name: 'Rei de Pentáculos',
+    filename: 'Pents14',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Pents14.jpg',
-    suit: 'pentacles'
+    suit: 'pentacles',
+    desc: 'Em meio à vegetação abundante do reino, o rei cujas roupas são estampadas com uvas segura um cetro em sua mão direita e apoia uma moeda sobre seu colo com a mão esquerda. Seu trono é decorado com pentáculos. Por baixo de sua roupa, ele veste uma armadura. Sua expressão é de satisfação. Seu reino é próspero e estável.',
+    meaning_up: 'prosperidade, abundância, segurança',
+    meaning_rev: 'mediocridade, fraqueza, aridez',
+    value: '14'
   }
 ]
 
-const suits = ['swords', 'pentacles', 'cups', 'wands']
-
-export {
-  cards_major,
-  cards_wands,
-  cards_cups,
-  cards_swords,
-  cards_pents,
-  suits
-}
+export { deck }

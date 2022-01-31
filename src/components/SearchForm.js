@@ -1,73 +1,50 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { FormControl, FormLabel, FormHelperText, Input } from '@chakra-ui/react'
 
-import {
-  cards_major,
-  cards_wands,
-  cards_cups,
-  cards_swords,
-  cards_pents
-} from '../data'
+import { deck } from '../data.js'
 import CardList from './CardList'
 
 function SearchForm() {
-  const [searchTerm, setSearchTerm] = useState('major')
+  const [searchTerm, setSearchTerm] = useState('')
   const [cards, setCards] = useState([])
   const searchValue = useRef('')
 
   const searchCard = () => {
-    setSearchTerm(searchValue.current.value.toLowerCase().replace(/\s/g, '+'))
+    // setSearchTerm(searchValue.current.value.toLowerCase().replace(/\s/g, '+'))
+    setSearchTerm(searchValue.current.value.toLowerCase())
   }
 
-  const fetchInfo = async () => {
-    // const url = `https://rws-cards-api.herokuapp.com/api/v1/cards/search?q=${searchTerm}`
-
-    if (searchTerm === 'major') {
-      setCards(cards_major)
-    } else if (searchTerm === 'pentacles') {
-      setCards(cards_pents)
-    } else if (searchTerm === 'wands') {
-      setCards(cards_wands)
-    } else if (searchTerm === 'cups') {
-      setCards(cards_cups)
-    } else if (searchTerm === 'swords') {
-      setCards(cards_swords)
-    }
-    /* else {
-      const response = await fetch(url)
-      const data = await response.json()
-
-      let cards = []
-      data.cards.map(item => {
-        if (item.type === 'major') {
-          let card = cards_major.find(element => element.id === item.value_int)
-          cards.push(card)
-        } else if (item.suit === 'swords') {
-          let card = cards_swords.find(element => element.id === item.value_int)
-          cards.push(card)
-        } else if (item.suit === 'pentacles') {
-          let card = cards_pents.find(element => element.id === item.value_int)
-          cards.push(card)
-        } else if (item.suit === 'cups') {
-          let card = cards_cups.find(element => element.id === item.value_int)
-          cards.push(card)
-        } else if (item.suit === 'wands') {
-          let card = cards_wands.find(element => element.id === item.value_int)
-          cards.push(card)
-        }
-
-        setCards(cards)
-
-         */
-  }
-
-  useEffect(() => {
-    fetchInfo()
-    return () => {
-      fetchInfo()
+  const filterItems = useCallback(() => {
+    if (searchTerm === 'maior') {
+      let newArr = []
+      for (let i = 0; i < 22; i++) {
+        newArr.push(deck[i])
+      }
+      setCards(newArr)
+    } else if (searchTerm === 'menor') {
+      let newArr = []
+      for (let i = 22; i < 78; i++) {
+        newArr.push(deck[i])
+      }
+      setCards(newArr)
+    } else if (Number.parseInt(searchTerm[0])) {
+      setCards(
+        deck.filter(element => {
+          return element.value.indexOf(searchTerm) > -1
+        })
+      )
+    } else {
+      setCards(
+        deck.filter(element => {
+          return element.name.toLowerCase().indexOf(searchTerm) > -1
+        })
+      )
     }
   }, [searchTerm])
+  useEffect(() => {
+    filterItems()
+  }, [searchTerm, filterItems])
 
   return (
     <>
@@ -90,12 +67,14 @@ function SearchForm() {
             fontSize="lg"
             fontFamily="Alegreya, serif"
             color="#fcf5d7ff"
-            placeholder="major"
+            placeholder="maior"
             _placeholder={{ opacity: '1' }}
             ref={searchValue}
             onChange={searchCard}
           />
-          <FormHelperText>Sample text</FormHelperText>
+          <FormHelperText>
+            Você pode pesquisar por nome, naipe, número, maior ou menor;
+          </FormHelperText>
         </FormControl>
       </section>
       <div className="cardlist">

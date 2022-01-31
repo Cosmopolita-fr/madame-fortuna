@@ -9,6 +9,7 @@ import Search from './pages/Search'
 import Error from './pages/Error'
 // import components
 import Navbar from './components/Navbar'
+import Card from './components/Card'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/card/:id" element={<Card />} />
           <Route path="/search" element={<Search />} />
           <Route path="*" element={<Error />} />
         </Routes>

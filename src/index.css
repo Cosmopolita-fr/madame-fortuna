@@ -131,6 +131,16 @@ html {
   
 }
 
+.logotitle{
+  font-family: var(--title);
+  font-size: 1rem;
+  font-weight: Bold;
+  /* position: absolute; */
+  
+
+  color: cornsilk;
+}
+
 .navbar {
   background-color: var(--black);
   display: flex;
