@@ -8,7 +8,14 @@ import { FaGlassMartiniAlt } from 'react-icons/fa'
 import { ImMagicWand } from 'react-icons/im'
 
 /* Chakra */
-import { Box, Tag, TagLabel, TagRightIcon, HStack } from '@chakra-ui/react'
+import {
+  Box,
+  Tag,
+  TagLabel,
+  TagRightIcon,
+  HStack,
+  Wrap
+} from '@chakra-ui/react'
 
 function Tags({ suit, meaning_up, meaning_rev }) {
   const [icon, setIcon] = useState('')
@@ -64,7 +71,7 @@ function Tags({ suit, meaning_up, meaning_rev }) {
           <TagLabel>{suit}</TagLabel>
         </Tag>
       </HStack>
-      <HStack ml={'.75rem'} mb={'0.25rem'}>
+      <Wrap ml={'.75rem'} mb={'0.25rem'} mr={'.75rem'} spacing={1}>
         <BsFileArrowUp size={25} color="#fcf5d7ff" />
         {tagUp.map((word, index) => {
           return (
@@ -79,8 +86,8 @@ function Tags({ suit, meaning_up, meaning_rev }) {
             </Tag>
           )
         })}
-      </HStack>
-      <HStack ml={'.75rem'}>
+      </Wrap>
+      <Wrap ml={'.75rem'} spacing={1} mr={'.75rem'}>
         <BsFileArrowDown size={25} color="#fcf5d7ff" />
         {tagDown.map((word, index) => {
           return (
@@ -95,7 +102,7 @@ function Tags({ suit, meaning_up, meaning_rev }) {
             </Tag>
           )
         })}
-      </HStack>
+      </Wrap>
     </div>
   )
 }

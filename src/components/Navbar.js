@@ -38,8 +38,16 @@ const Navbar = () => {
       <nav className="navbar">
         <Link to="/">
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={logo} alt="logo" className="logo" />
-            <h1 className="logotitle">Madame Fortuna</h1>
+            <img src={logo} alt="logo" className="logo" style={{}} />
+            <h1
+              className="logotitle"
+              style={{
+                position: 'absolute',
+                marginLeft: '1.65rem'
+              }}
+            >
+              Madame Fortuna
+            </h1>
           </div>
         </Link>
         <Menu>
