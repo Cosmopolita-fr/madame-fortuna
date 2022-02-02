@@ -19,6 +19,7 @@ const AppProvider = ({ children }) => {
   const [randomCard, setRandomCard] = useState({})
   const [isRev, setIsRev] = useState(false)
   const [isLoading, setLoading] = useState(false)
+  const [isSearchPage, setIsSearchPage] = useState(false)
 
   const getRandom = () => {
     setLoading(true)
@@ -41,7 +42,11 @@ const AppProvider = ({ children }) => {
         randomCard,
         setRandomCard,
         isLoading,
-        setLoading
+        setLoading,
+        isRev,
+        setIsRev,
+        isSearchPage,
+        setIsSearchPage
       }}
     >
       {children}

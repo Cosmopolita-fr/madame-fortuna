@@ -1,4 +1,4 @@
-import galaxy from '../assets/background-33.png'
+import galaxy from '../assets/galaxy-bg.jpg'
 
 const styles = {
   global: {

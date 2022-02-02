@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { FormControl, FormLabel, FormHelperText, Input } from '@chakra-ui/react'
+import { useGlobalContext } from '../context.js'
 
 import { deck } from '../data.js'
 import CardList from './CardList'
@@ -9,6 +10,7 @@ function SearchForm() {
   const [searchTerm, setSearchTerm] = useState('')
   const [cards, setCards] = useState([])
   const searchValue = useRef('')
+  const { setIsRev, setIsSearchPage } = useGlobalContext()
 
   const searchCard = () => {
     // setSearchTerm(searchValue.current.value.toLowerCase().replace(/\s/g, '+'))
@@ -44,6 +46,8 @@ function SearchForm() {
   }, [searchTerm])
   useEffect(() => {
     filterItems()
+    setIsRev(false)
+    setIsSearchPage(true)
   }, [searchTerm, filterItems])
 
   return (
