@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useGlobalContext } from '../context'
-import Tags from './Tags'
+import Tags from './Tags/Tags'
 import Error from '../pages/Error'
 import Loading from './Loading'
 
@@ -17,8 +17,21 @@ function Card() {
   const { id } = useParams()
   const [isRandom, setIsRandom] = useState(false)
   const [card, setCard] = useState(deck[id] || deck[0])
-  const { isLoading, setLoading } = useGlobalContext()
+  const [cardOrientation, setCardOrientation] = useState(false) // true == reverse
+  const { isLoading, setLoading, isRev } = useGlobalContext()
   let navigate = useNavigate()
+
+  const rotateCard = () => {
+    if (isRev) {
+      const random_boolean = Math.random() < 0.5
+      setCardOrientation(random_boolean)
+    }
+  }
+
+  useEffect(() => {
+    rotateCard()
+    console.log(isRev)
+  }, [])
 
   if (isLoading) {
     return <Loading />
@@ -31,10 +44,13 @@ function Card() {
     navigate(-1)
   }
 
-  const { name, image, desc, suit, meaning_up, meaning_rev } = card
+  const { name, type, image, desc, suit, meaning_up, meaning_rev } = card
+
   return (
     <div>
-      <h1 className="title">{name}</h1>
+      <h1 className="title">
+        {cardOrientation ? `${name} - Invertida` : `${name}`}
+      </h1>
       <div
         style={{
           display: 'flex',
@@ -43,7 +59,12 @@ function Card() {
           alignItems: 'center'
         }}
       >
-        <img className="card-img" src={image} alt="" />
+        <img
+          className={'card-img'}
+          src={image}
+          alt=""
+          style={cardOrientation ? { transform: 'rotate(180deg)' } : {}}
+        />
         <Link to=""></Link>
         <Button
           mt={2}
@@ -59,7 +80,14 @@ function Card() {
           Voltar
         </Button>
       </div>
-      <Tags suit={suit} meaning_up={meaning_up} meaning_rev={meaning_rev} />
+      <Tags
+        type={type}
+        suit={suit}
+        meaning_up={meaning_up}
+        meaning_rev={meaning_rev}
+        cardOrientation={cardOrientation}
+        isRev={isRev}
+      />
       <p className="subtitle">{desc}</p>
     </div>
   )

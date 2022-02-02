@@ -3,16 +3,13 @@ import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import cardback_img from '../assets/cardback.png'
 
-/* ChakraUI */
-import { Stack, Switch } from '@chakra-ui/react'
-
 /* Component */
 import Card from './Card'
 
 function Cardback() {
-  const { setLoading } = useGlobalContext()
+  const { setLoading, setIsSearchPage } = useGlobalContext()
   const [id, setId] = useState('')
-  const [invert, setInvert] = useState(true)
+  const [isInvert, setInvert] = useState(true)
 
   function getRandomCard(min = 0, max = 77) {
     setLoading(true)
@@ -22,20 +19,16 @@ function Cardback() {
     setLoading(false)
   }
 
-  const toggleInv = () => {
-    setInvert(!invert)
-    console.log(invert)
-  }
-
   const timeOut = () => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 500)
+    }, 750)
   }
 
   useEffect(() => {
     getRandomCard()
+    setIsSearchPage(false)
   }, [])
 
   return (
@@ -59,27 +52,6 @@ function Cardback() {
       <h1 className="title" style={{ textAlign: 'center' }}>
         Mentalize uma pergunta e descubra o que a Fortuna te reserva...
       </h1>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '1rem'
-        }}
-      >
-        <h1 className="subtitle">Inversões?</h1>
-        <Stack direction="row">
-          <Switch
-            colorScheme="yellow"
-            size="md"
-            // defaultChecked={invert}
-            onChange={() => {
-              setInvert(!invert)
-            }}
-          />
-        </Stack>
-      </div>
     </div>
   )
 }
