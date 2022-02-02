@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGlobalContext } from '../../context'
 /* icons */
-import { BsFileArrowUp, BsFileArrowDown } from 'react-icons/bs'
+import { BsFileArrowDown } from 'react-icons/bs'
 
 /* Chakra */
 import { Tag, TagLabel, Wrap } from '@chakra-ui/react'
@@ -35,6 +35,8 @@ function TagDown({ tagDown, isRev, cardOrientation }) {
               <TagLabel>{word}</TagLabel>
             </Tag>
           )
+        } else if (isRev && !cardOrientation) {
+          return
         } else {
           return (
             <Tag
