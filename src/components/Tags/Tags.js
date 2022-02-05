@@ -12,7 +12,15 @@ import { ImMagicWand } from 'react-icons/im'
 /* Chakra */
 import { Tag, TagLabel, HStack } from '@chakra-ui/react'
 
-function Tags({ type, suit, meaning_up, meaning_rev, cardOrientation, isRev }) {
+function Tags({
+  type,
+  suit,
+  meaning_up,
+  meaning_rev,
+  cardOrientation,
+  isRev,
+  isDesktop
+}) {
   const [icon, setIcon] = useState('')
 
   const tagUp = meaning_up.split(',')
@@ -58,7 +66,7 @@ function Tags({ type, suit, meaning_up, meaning_rev, cardOrientation, isRev }) {
       >
         {icon}
         <Tag
-          size={'md'}
+          size={isDesktop ? 'lg' : 'md'}
           fontFamily="Lexend Deca, sans-serif"
           variant="subtle"
           colorScheme="purple"
@@ -70,7 +78,12 @@ function Tags({ type, suit, meaning_up, meaning_rev, cardOrientation, isRev }) {
           <TagLabel>{suit !== 'maior' ? suit : ''}</TagLabel>
         </Tag>
       </HStack>
-      <TagUp tagUp={tagUp} isRev={isRev} cardOrientation={cardOrientation} />
+      <TagUp
+        tagUp={tagUp}
+        isRev={isRev}
+        cardOrientation={cardOrientation}
+        isDesktop={isDesktop}
+      />
       <TagDown
         tagDown={tagDown}
         isRev={isRev}

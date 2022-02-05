@@ -18,7 +18,7 @@ function Card() {
   const [isRandom, setIsRandom] = useState(false)
   const [card, setCard] = useState(deck[id] || deck[0])
   const [cardOrientation, setCardOrientation] = useState(false) // true == reverse
-  const { isLoading, setLoading, isRev } = useGlobalContext()
+  const { isLoading, setLoading, isRev, isDesktop } = useGlobalContext()
   let navigate = useNavigate()
 
   const rotateCard = () => {
@@ -30,7 +30,6 @@ function Card() {
 
   useEffect(() => {
     rotateCard()
-    console.log(isRev)
   }, [])
 
   if (isLoading) {
@@ -47,18 +46,11 @@ function Card() {
   const { name, type, image, desc, suit, meaning_up, meaning_rev } = card
 
   return (
-    <div>
-      <h1 className="title">
-        {cardOrientation ? `${name} - Invertida` : `${name}`}
-      </h1>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
+    <div className="outsidebox">
+      <div className="cardbox">
+        <h1 className="title">
+          {cardOrientation ? `${name} - Invertida` : `${name}`}
+        </h1>
         <img
           className={'card-img'}
           src={image}
@@ -80,15 +72,18 @@ function Card() {
           Voltar
         </Button>
       </div>
-      <Tags
-        type={type}
-        suit={suit}
-        meaning_up={meaning_up}
-        meaning_rev={meaning_rev}
-        cardOrientation={cardOrientation}
-        isRev={isRev}
-      />
-      <p className="subtitle">{desc}</p>
+      <div className="descbox">
+        <Tags
+          type={type}
+          suit={suit}
+          meaning_up={meaning_up}
+          meaning_rev={meaning_rev}
+          cardOrientation={cardOrientation}
+          isRev={isRev}
+          isDesktop={isDesktop}
+        />
+        <p className="subtitle">{desc}</p>
+      </div>
     </div>
   )
 }

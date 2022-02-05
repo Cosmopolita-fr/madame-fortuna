@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react'
 // import { useCallback } from 'react' --> fetchCards
 
+import { useMediaQuery } from '@chakra-ui/react'
+
 // data
 import { deck } from './data.js'
 
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
+  const [isDesktop] = useMediaQuery('(min-width: 700px)')
   const [randomCard, setRandomCard] = useState({})
   const [isRev, setIsRev] = useState(true)
   const [isLoading, setLoading] = useState(false)
@@ -37,7 +40,8 @@ const AppProvider = ({ children }) => {
         isRev,
         setIsRev,
         isSearchPage,
-        setIsSearchPage
+        setIsSearchPage,
+        isDesktop
       }}
     >
       {children}
