@@ -7,7 +7,7 @@ import { BsFileArrowDown } from 'react-icons/bs'
 import { Tag, TagLabel, Wrap } from '@chakra-ui/react'
 
 function TagDown({ tagDown, isRev, cardOrientation }) {
-  const { isSearchPage } = useGlobalContext()
+  const { isSearchPage, isDesktop } = useGlobalContext()
   return (
     <Wrap ml={'.75rem'} spacing={1} mr={'.75rem'}>
       {(isRev && !cardOrientation) || !isSearchPage ? (
@@ -26,7 +26,7 @@ function TagDown({ tagDown, isRev, cardOrientation }) {
         } else if (isSearchPage) {
           return (
             <Tag
-              size={'md'}
+              size={isDesktop ? 'lg' : 'md'}
               fontFamily="Lexend Deca, sans-serif"
               variant="subtle"
               colorScheme="purple"
@@ -40,7 +40,7 @@ function TagDown({ tagDown, isRev, cardOrientation }) {
         } else {
           return (
             <Tag
-              size={'md'}
+              size={isDesktop ? 'lg' : 'md'}
               fontFamily="Lexend Deca, sans-serif"
               variant="subtle"
               colorScheme="purple"

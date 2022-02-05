@@ -11,15 +11,13 @@ function Error() {
         alignItems: 'center'
       }}
     >
-      <h1
-        style={{
-          margin: '2rem',
-          fontSize: '2rem',
-          fontFamily: 'Alegreya, serif'
-        }}
-      >
-        oops! it's a dead end
+      <h1 className="title" style={{ margin: '2rem' }}>
+        Oops! it's a dead end...
       </h1>
+      <img
+        className="card-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg"
+      ></img>
       <Link to="/">
         <Box
           as="button"

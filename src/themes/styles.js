@@ -2,10 +2,10 @@ import galaxy from '../assets/galaxy-bg.jpg'
 
 const styles = {
   global: {
-    body: {
+    /* body: {
       backgroundImage: galaxy,
       bgSize: 'contain'
-    }
+    } */
   }
 }
 

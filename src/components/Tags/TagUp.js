@@ -6,7 +6,7 @@ import { BsFileArrowUp } from 'react-icons/bs'
 /* Chakra */
 import { Tag, TagLabel, Wrap } from '@chakra-ui/react'
 
-function TagUp({ tagUp, cardOrientation }) {
+function TagUp({ tagUp, cardOrientation, isDesktop }) {
   return (
     <Wrap ml={'.75rem'} mb={'0.25rem'} mr={'.75rem'} spacing={1}>
       {cardOrientation ? '' : <BsFileArrowUp size={25} color="#fcf5d7ff" />}
@@ -14,7 +14,7 @@ function TagUp({ tagUp, cardOrientation }) {
         if (!cardOrientation) {
           return (
             <Tag
-              size={'md'}
+              size={isDesktop ? 'lg' : 'md'}
               fontFamily="Lexend Deca, sans-serif"
               variant="subtle"
               colorScheme="purple"

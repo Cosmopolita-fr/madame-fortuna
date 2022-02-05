@@ -6,7 +6,10 @@ function Home() {
     <>
       <Cardback />
       <SwitchReverseCard />
-      <h1 className="title" style={{ textAlign: 'center' }}>
+      <h1
+        className="title"
+        style={{ textAlign: 'center', marginBottom: '1rem' }}
+      >
         Mentalize uma pergunta e descubra o que a Fortuna te reserva...
       </h1>
     </>
