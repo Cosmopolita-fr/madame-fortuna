@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useGlobalContext } from '../context'
 
 /* ChakraUI */
@@ -20,7 +20,7 @@ function SwitchReverseCard() {
       <h1 className="subtitle">Inversões?</h1>
       <Stack direction="row">
         <Switch
-          colorScheme="yellow"
+          colorScheme="purple"
           size="md"
           isChecked={isRev}
           onChange={e => {

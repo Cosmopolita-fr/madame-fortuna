@@ -1,7 +1,7 @@
 import React from 'react'
 
 /* icons */
-import { BsFileArrowUp, BsFileArrowDown } from 'react-icons/bs'
+import { BsFileArrowUp } from 'react-icons/bs'
 
 /* Chakra */
 import { Tag, TagLabel, Wrap } from '@chakra-ui/react'

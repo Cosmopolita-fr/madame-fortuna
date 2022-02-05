@@ -7,6 +7,7 @@ import theme from './themes/index'
 import Home from './pages/Home'
 import Search from './pages/Search'
 import Error from './pages/Error'
+import About from './pages/About'
 // import components
 import Navbar from './components/Navbar'
 import Card from './components/Card'
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/card/:id" element={<Card />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </ChakraProvider>

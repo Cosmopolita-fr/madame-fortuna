@@ -4,23 +4,14 @@ import logo from '../assets/logo.png'
 import {
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
   IconButton,
   Collapse,
   useDisclosure,
   Box,
-  Button,
-  Flex
+  Button
 } from '@chakra-ui/react'
 
-import {
-  HamburgerIcon,
-  AddIcon,
-  ExternalLinkIcon,
-  RepeatIcon,
-  EditIcon
-} from '@chakra-ui/icons'
+import { HamburgerIcon } from '@chakra-ui/icons'
 
 const Navbar = () => {
   const { isOpen, onToggle, onClose } = useDisclosure()
@@ -79,7 +70,7 @@ const Navbar = () => {
           shadow="md"
           // boxShadow={'0 0 0.2em #39313eff'}
           display="flex"
-          justifyContent="center"
+          justifyContent="space-around"
         >
           <Link to="/search">
             <Button
@@ -89,36 +80,20 @@ const Navbar = () => {
                 boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
               }}
             >
-              Search
+              Busca
             </Button>
           </Link>
-          <Button
-            color="#fcf5d7ff"
-            variant="ghost"
-            _focus={{
-              boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
-            }}
-          >
-            Cards
-          </Button>
-          <Button
-            color="#fcf5d7ff"
-            variant="ghost"
-            _focus={{
-              boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
-            }}
-          >
-            About
-          </Button>
-          <Button
-            color="#fcf5d7ff"
-            variant="ghost"
-            _focus={{
-              boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
-            }}
-          >
-            Suits
-          </Button>
+          <Link to="/about">
+            <Button
+              color="#fcf5d7ff"
+              variant="ghost"
+              _focus={{
+                boxShadow: '0 0 1px 1px #fcf5d7ff, 0 1px 1px rgba(0, 0, 0, .15)'
+              }}
+            >
+              About
+            </Button>
+          </Link>
         </Box>
       </Collapse>
     </>

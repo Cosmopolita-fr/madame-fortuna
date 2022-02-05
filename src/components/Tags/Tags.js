@@ -4,25 +4,16 @@ import TagUp from './TagUp'
 import TagDown from './TagDown'
 
 /* icons */
-import { BsFileArrowUp, BsFileArrowDown } from 'react-icons/bs'
-import { GiPentacle, GiHandOfGod, GiCardPickup } from 'react-icons/gi'
+import { GiPentacle, GiHandOfGod } from 'react-icons/gi'
 import { RiSwordLine } from 'react-icons/ri'
 import { FaGlassMartiniAlt } from 'react-icons/fa'
 import { ImMagicWand } from 'react-icons/im'
 
 /* Chakra */
-import {
-  Box,
-  Tag,
-  TagLabel,
-  TagRightIcon,
-  HStack,
-  Wrap
-} from '@chakra-ui/react'
+import { Tag, TagLabel, HStack } from '@chakra-ui/react'
 
 function Tags({ type, suit, meaning_up, meaning_rev, cardOrientation, isRev }) {
   const [icon, setIcon] = useState('')
-  const [typeIcon, setTypeIcon] = useState('')
 
   const tagUp = meaning_up.split(',')
   const tagDown = meaning_rev.split(',')
@@ -76,7 +67,7 @@ function Tags({ type, suit, meaning_up, meaning_rev, cardOrientation, isRev }) {
           padding={1}
         >
           <TagLabel>{type}</TagLabel>
-          <TagLabel>{suit != 'maior' ? suit : ''}</TagLabel>
+          <TagLabel>{suit !== 'maior' ? suit : ''}</TagLabel>
         </Tag>
       </HStack>
       <TagUp tagUp={tagUp} isRev={isRev} cardOrientation={cardOrientation} />

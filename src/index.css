@@ -58,16 +58,27 @@ html {
   max-height: 28rem; 
   /* border-bottom: 2px solid var(black); */
   /* box-shadow: var(--lightShadow); */
-  box-shadow: 1px 1px 1px 1px var(--black);
-  border: solid var(--black)
-  
+  border: solid var(--black);
+  animation: pulse 3s infinite;
 }
 
 
-.backcard-img:hover, .backcard-img:active{
-  box-shadow: 0 0 1.5em blueviolet;
-  
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 .1em blueviolet;
+    box-shadow: 0 0 .1em blueviolet;
+  }
+  50% {
+      -moz-box-shadow: 0 0 4em blueviolet;
+      box-shadow: 0 0 4em blueviolet;
+  }
+  100% {
+      -moz-box-shadow: 0 0 .1em blueviolet;
+      box-shadow: 0 0 .1em blueviolet;
+  }
 }
+
+
 
 .button-primary {
   background-color: var(--black-coffee);

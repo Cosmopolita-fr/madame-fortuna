@@ -1,15 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import cardback_img from '../assets/cardback.png'
 
-/* Component */
-import Card from './Card'
-
 function Cardback() {
   const { setLoading, setIsSearchPage } = useGlobalContext()
   const [id, setId] = useState('')
-  const [isInvert, setInvert] = useState(true)
 
   function getRandomCard(min = 0, max = 77) {
     setLoading(true)
@@ -49,9 +45,6 @@ function Cardback() {
           alt="Cardback"
         />
       </Link>
-      <h1 className="title" style={{ textAlign: 'center' }}>
-        Mentalize uma pergunta e descubra o que a Fortuna te reserva...
-      </h1>
     </div>
   )
 }

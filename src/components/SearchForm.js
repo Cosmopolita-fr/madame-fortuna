@@ -60,7 +60,7 @@ function SearchForm() {
             fontFamily="Alegreya, serif"
             color="#fcf5d7ff"
           >
-            Search a card
+            Pesquise uma carta
           </FormLabel>
           <Input
             id="name"
