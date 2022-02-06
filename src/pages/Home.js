@@ -8,7 +8,7 @@ function Home() {
       <SwitchReverseCard />
       <h1
         className="title"
-        style={{ textAlign: 'center', marginBottom: '1rem' }}
+        style={{ textAlign: 'center', margin: '1rem' }}
       >
         Mentalize uma pergunta e descubra o que a Fortuna te reserva...
       </h1>
